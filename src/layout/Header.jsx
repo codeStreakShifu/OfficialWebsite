@@ -1,6 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
-import logo from "../assets/images/logo.png"; // Adjust the path based on your logo location
-import logoText from "../assets/images/text-logo.png"; // Adjust the path based on your logo text location
+import { useState } from "react";
+import logo from "../assets/images/logo.png";
+import logoText from "../assets/images/text-logo.png";
+import headerBg from "../assets/images/header-bg.jpg";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 const navItems = [
   { to: "/", label: "Home" },
@@ -11,38 +14,81 @@ const navItems = [
   { to: "/contact", label: "Contact" },
 ];
 
-const Header = () => (
-  // Adjust header height and width with these classes
-  <header className="bg-white shadow sticky top-0 z-50 w-full">
-    {/* Adjust container width: max-w-7xl, max-w-6xl, max-w-5xl, etc */}
-    {/* Adjust padding: px-4, px-6, px-8, etc */}
-    {/* Adjust vertical padding: py-2, py-4, py-6, etc */}
-    <div className="container mx-auto flex items-center justify-between py-4 px-6">
-      <Link to="/" className="flex items-center">
-        {/* Adjust logo size: h-6, h-8, h-10, h-12, etc */}
-        {/* Add width if needed: w-auto, w-24, w-32, etc */}
-        {/* Add margin if needed: mr-4, ml-2, etc */}
-        <img src={logo} alt="Company Logo" className="h-20 w-auto" />
-        <img src={logoText} alt="Company Logo Text" className="h-20 w-auto" />
-        
-      
-      </Link>
-      {/* Adjust nav spacing: space-x-4, space-x-6, space-x-8, etc */}
-      <nav className="space-x-6">
-        {navItems.map((item) => (
-          <NavLink
-            key={item.to}
-            to={item.to}
-            className={({ isActive }) =>
-              `hover:text-indigo-600 transition ${isActive ? "text-indigo-700 font-semibold" : "text-gray-700"}`
-            }
-          >
-            {item.label}
-          </NavLink>
-        ))}
-      </nav>
-    </div>
-  </header>
-);
+const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  return (
+    <header 
+      className="shadow fixed top-0 z-50 w-full"
+      style={{
+        backgroundImage: `linear-gradient(to bottom, rgba(229, 229, 248, 0.6), rgba(55, 55, 73, 0.2)), url(${headerBg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backdropFilter: 'blur(8px)'
+      }}
+    >
+      <div className="container mx-auto flex items-center justify-between py-2 md:py-4 px-4 md:px-6">
+        <Link to="/" className="flex items-center gap-1 sm:gap-2">
+          <img 
+            src={logo} 
+            alt="Company Logo" 
+            className="h-10 w-auto sm:h-16 md:h-20 transition-all duration-300" 
+          />
+          <img 
+            src={logoText} 
+            alt="Company Logo Text" 
+            className="h-10 w-auto sm:h-16 md:h-20 transition-all duration-300" 
+          />
+        </Link>
+
+        {/* Hamburger Menu Button */}
+        <button
+            className="xl:hidden text-gray-700 hover:text-indigo-600 transition p-2"
+          onClick={toggleMenu}
+        >
+          {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+        </button>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden xl:block space-x-6">
+          {navItems.map((item) => (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              className={({ isActive }) =>
+                `hover:text-indigo-600 transition ${isActive ? "text-yellow-500 font-semibold" : "text-white"}`
+              }
+            >
+              {item.label}
+            </NavLink>
+          ))}
+        </nav>
+
+        {/* Mobile Navigation */}
+        <nav className={`
+          xl:hidden fixed top-[88px] left-0 w-full h-screen
+          bg-white/90 backdrop-blur-lg transform transition-transform duration-300
+          ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}
+          flex flex-col items-center pt-8 space-y-4
+        `}>
+          {navItems.map((item) => (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              onClick={() => setIsMenuOpen(false)}
+              className={({ isActive }) =>
+                `text-xl hover:text-indigo-600 transition ${isActive ? "text-indigo-700 font-semibold" : "text-gray-700"}`
+              }
+            >
+              {item.label}
+            </NavLink>
+          ))}
+        </nav>
+      </div>
+    </header>
+  );
+};
 
 export default Header;
