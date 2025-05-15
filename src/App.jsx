@@ -11,24 +11,25 @@ import WebDevelopment from "./pages/services/WebDevelopment";
 import BookPublishing from "./pages/services/BookPublishing";
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
+import "./index.css"; // Import your global CSS file
 
 function App() {
   return (
     <Router>
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen w-full overflow-x-hidden">
         <Header />
-        <main className="flex-grow">
+        <main className="flex-grow w-full">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/services/graphic-design" element={<GraphicDesign />} />
-            <Route path="/services/marketing" element={<Marketing />} />
-            <Route path="/services/web-development" element={<WebDevelopment />} />
-            <Route path="/services/book-publishing" element={<BookPublishing />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="" element={<Home />} />
+            <Route path="about" element={<About />} />
+            <Route path="services" element={<Services />} />
+            <Route path="services/graphic-design" element={<GraphicDesign />} />
+            <Route path="services/marketing" element={<Marketing />} />
+            <Route path="services/web-development" element={<WebDevelopment />} />
+            <Route path="services/book-publishing" element={<BookPublishing />} />
+            <Route path="portfolio" element={<Portfolio />} />
+            <Route path="blog" element={<Blog />} />
+            <Route path="contact" element={<Contact />} />
           </Routes>
         </main>
         <Footer />
