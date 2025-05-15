@@ -1,14 +1,15 @@
 {
-  "name": "agency-website",
+  "name": "officialwebsite",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://codestreakshifu.github.io/OfficialWebsite/",
+  "homepage": "https://yourusername.github.io/OfficialWebsite",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "preview": "vite preview"
   },
   "dependencies": {
     "framer-motion": "^12.11.3",
