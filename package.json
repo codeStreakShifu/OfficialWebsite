@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://codestreakshifu.github.io/OfficialWebsite",
+  "homepage": "https://voxeditionworks.com",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
