@@ -4,8 +4,15 @@ export default {
   theme: {
     extend: {},
   },
+  
+  theme: {
+    extend: {
+      colors: {
+        cream: "#F5EEDD",
+      },
+    },
+  },
   plugins: [],
-
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",

@@ -252,24 +252,28 @@ const Home = () => (
     </section>
 
     {/* Newsletter Section */}
-    <section className="py-40 bg-gray-900">
-      <div className="w-full px-4 max-w-7xl mx-auto"> {/* Changed from w-screen */}
+    <section className="py-20 md:py-40 bg-gray-900">
+      <div className="w-full px-4 max-w-7xl mx-auto">
         <motion.div
-          className="max-w-4xl mx-auto bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 p-12 rounded-3xl backdrop-blur-xl"
+          className="max-w-4xl mx-auto bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 p-6 md:p-12 rounded-3xl backdrop-blur-xl"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h4 className="text-2xl font-semibold mb-4 text-center">Stay Updated</h4>
-          <p className="text-gray-300 mb-6 text-center">Subscribe to our newsletter for the latest insights and trends.</p>
-          <div className="flex max-w-md mx-auto">
+          <h4 className="text-xl md:text-2xl font-semibold mb-3 md:mb-4 text-center">
+            Stay Updated
+          </h4>
+          <p className="text-sm md:text-base text-gray-300 mb-4 md:mb-6 text-center px-2">
+            Subscribe to our newsletter for the latest insights and trends.
+          </p>
+          <div className="flex flex-col md:flex-row gap-3 md:gap-0 max-w-md mx-auto">
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-grow px-6 py-3 rounded-l-full bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full md:w-auto flex-grow px-4 md:px-6 py-3 rounded-full md:rounded-r-none bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
             <motion.button
-              className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-r-full font-semibold hover:shadow-lg hover:shadow-indigo-500/50"
+              className="w-full md:w-auto px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full md:rounded-l-none font-semibold hover:shadow-lg hover:shadow-indigo-500/50 whitespace-nowrap"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

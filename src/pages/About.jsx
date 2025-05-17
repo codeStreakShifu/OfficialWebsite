@@ -47,7 +47,7 @@ const About = () => {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-5xl md:text-7xl font-bold text-yellow-400 tracking-wider pb-8">
-            ABOUT VoxEdition Works Inc.
+            About VoxEdition Works Inc.
           </h1>
           <div className="grid md:grid-cols-2 gap-12 items-start">
             <motion.div

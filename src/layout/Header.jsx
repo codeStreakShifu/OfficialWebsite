@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
-import logo from "../assets/images/logo.png";
-import logoText from "../assets/images/text-logo.png";
+import logo from "../assets/images/logo.svg";
+import logoText from "../assets/images/logotext.svg";
 import headerBg from "../assets/images/header-bg.jpg";
 import { FaBars, FaTimes } from "react-icons/fa";
 
@@ -34,7 +34,7 @@ const Header = () => {
           <img 
             src={logo} 
             alt="Company Logo" 
-            className="h-10 w-auto sm:h-16 md:h-20 transition-all duration-300" 
+            className="h-10 w-auto sm:h-16 md:h-20  lg:h-24 xl:h-28 mr-6 transition-all duration-300 " 
           />
           <img 
             src={logoText} 

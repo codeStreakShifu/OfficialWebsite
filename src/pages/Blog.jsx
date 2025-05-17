@@ -59,15 +59,15 @@ const Blog = () => {
           transition={{ duration: 1.5 }}
           className="absolute inset-0"
         >
-          <img 
+          <img
             src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3"
             alt="Blog Hero"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-gray-900/70 to-gray-900/90" />
         </motion.div>
-        
-        <motion.div 
+
+        <motion.div
           className="absolute inset-0 flex flex-col items-center justify-center text-center px-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -84,7 +84,7 @@ const Blog = () => {
 
       {/* Category Filter */}
       <div className="container mx-auto px-4 mb-12">
-        <motion.div 
+        <motion.div
           className="flex flex-wrap justify-center gap-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -94,8 +94,8 @@ const Blog = () => {
               key={category}
               onClick={() => setSelectedCategory(category)}
               className={`px-6 py-2 rounded-full text-sm font-medium transition-all
-                ${selectedCategory === category 
-                  ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white' 
+                ${selectedCategory === category
+                  ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white'
                   : 'bg-white/10 text-gray-300 hover:bg-white/20'
                 }`}
               whileHover={{ scale: 1.05 }}
@@ -108,7 +108,7 @@ const Blog = () => {
       </div>
 
       {/* Blog Posts Grid */}
-      <motion.div 
+      <motion.div
         className="container mx-auto px-4"
         layout
       >
@@ -123,7 +123,7 @@ const Blog = () => {
               className="bg-white/10 backdrop-blur-lg rounded-xl overflow-hidden group cursor-pointer"
             >
               <div className="relative h-48">
-                <img 
+                <img
                   src={post.image}
                   alt={post.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -135,8 +135,8 @@ const Blog = () => {
                 <h3 className="text-xl font-semibold mt-2 mb-3">{post.title}</h3>
                 <p className="text-gray-300 text-sm mb-4">{post.excerpt}</p>
                 <div className="flex items-center gap-3">
-                  <img 
-                    src={post.author.avatar} 
+                  <img
+                    src={post.author.avatar}
                     alt={post.author.name}
                     className="w-8 h-8 rounded-full object-cover"
                   />
@@ -149,31 +149,37 @@ const Blog = () => {
       </motion.div>
 
       {/* Newsletter Section */}
-      <motion.div 
-        className="container mx-auto px-4 mt-20"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-      >
-        <div className="max-w-2xl mx-auto text-center bg-white/10 backdrop-blur-lg rounded-xl p-8">
-          <h2 className="text-2xl font-bold mb-4">Stay Updated</h2>
-          <p className="text-gray-300 mb-6">Subscribe to our newsletter for the latest insights and updates.</p>
-          <div className="flex gap-4 max-w-md mx-auto">
-            <input 
-              type="email" 
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-2 rounded-lg bg-white/5 border border-gray-700 focus:border-blue-500 outline-none"
-            />
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg font-medium"
-            >
-              Subscribe
-            </motion.button>
-          </div>
+      <section className="py-20 md:py-40 bg-gray-900">
+        <div className="w-full px-4 max-w-7xl mx-auto">
+          <motion.div
+            className="max-w-4xl mx-auto bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 p-6 md:p-12 rounded-3xl backdrop-blur-xl"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h4 className="text-xl md:text-2xl font-semibold mb-3 md:mb-4 text-center">
+              Stay Updated
+            </h4>
+            <p className="text-sm md:text-base text-gray-300 mb-4 md:mb-6 text-center px-2">
+              Subscribe to our newsletter for the latest insights and trends.
+            </p>
+            <div className="flex flex-col md:flex-row gap-3 md:gap-0 max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="w-full md:w-auto flex-grow px-4 md:px-6 py-3 rounded-full md:rounded-r-none bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+              <motion.button
+                className="w-full md:w-auto px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full md:rounded-l-none font-semibold hover:shadow-lg hover:shadow-indigo-500/50 whitespace-nowrap"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Subscribe
+              </motion.button>
+            </div>
+          </motion.div>
         </div>
-      </motion.div>
+      </section>
     </div>
   );
 };

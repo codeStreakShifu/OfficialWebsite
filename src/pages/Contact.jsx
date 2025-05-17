@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock } from "react-icons/fa";
+import emailjs from '@emailjs/browser';
+
+emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
 
 const contactInfo = [
   {
@@ -31,7 +34,78 @@ const contactInfo = [
 
 const Contact = () => {
   const [formStep, setFormStep] = useState(1);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    date: '',
+    time: '',
+    topic: 'Web Development Consultation',
+    notes: ''
+  });
+  const [selectedTime, setSelectedTime] = useState('');
+
+  const timeSlots = [
+    "9:00 AM", "10:00 AM", "11:00 AM",
+    "2:00 PM", "3:00 PM", "4:00 PM"
+  ];
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleTimeSelect = (time) => {
+    setSelectedTime(time);
+    setFormData(prev => ({
+      ...prev,
+      time
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        date: formData.date,
+        time: formData.time,
+        topic: formData.topic,
+        notes: formData.notes,
+        to_email: 'joseph2025@voxeditionworks.com', // You may want to move this to env vars
+      };
+
+      const result = await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        templateParams
+      );
+
+      console.log('Email sent successfully:', result);
+      alert('Meeting scheduled successfully! We will contact you shortly.');
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        date: '',
+        time: '',
+        topic: 'Web Development Consultation',
+        notes: ''
+      });
+      setFormStep(1);
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      alert('Failed to schedule meeting. Please try again.');
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white pt-24 pb-20">
@@ -68,14 +142,14 @@ const Contact = () => {
 
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* Contact Form */}
+          {/* Scheduling Form */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             className="bg-white/10 backdrop-blur-lg p-8 rounded-xl"
           >
-            <h2 className="text-2xl font-bold mb-6">Request a Quote</h2>
-            <form className="space-y-6">
+            <h2 className="text-2xl font-bold mb-6">Schedule a Consultation</h2>
+            <form className="space-y-6" onSubmit={handleSubmit}>
               {formStep === 1 && (
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -83,17 +157,39 @@ const Contact = () => {
                   className="space-y-4"
                 >
                   <div>
-                    <label className="block text-sm font-medium mb-2">Name</label>
+                    <label className="block text-sm font-medium mb-2">Your Name</label>
                     <input 
                       type="text" 
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
                       className="w-full px-4 py-2 rounded-lg bg-white/5 border border-gray-700 focus:border-blue-500 outline-none"
+                      placeholder="John Doe"
+                      required
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Email</label>
+                    <label className="block text-sm font-medium mb-2">Email Address</label>
                     <input 
-                      type="email" 
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
                       className="w-full px-4 py-2 rounded-lg bg-white/5 border border-gray-700 focus:border-blue-500 outline-none"
+                      placeholder="john@example.com"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Phone Number</label>
+                    <input 
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2 rounded-lg bg-white/5 border border-gray-700 focus:border-blue-500 outline-none"
+                      placeholder="+1 (555) 000-0000"
+                      required
                     />
                   </div>
                   <motion.button
@@ -103,7 +199,7 @@ const Contact = () => {
                     className="w-full px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg font-medium"
                     type="button"
                   >
-                    Next Step
+                    Next: Choose Time
                   </motion.button>
                 </motion.div>
               )}
@@ -115,19 +211,61 @@ const Contact = () => {
                   className="space-y-4"
                 >
                   <div>
-                    <label className="block text-sm font-medium mb-2">Service Needed</label>
-                    <select className="w-full px-4 py-2 rounded-lg bg-white/5 border border-gray-700 focus:border-blue-500 outline-none">
-                      <option>Web Development</option>
-                      <option>Graphic Design</option>
-                      <option>Marketing</option>
-                      <option>Book Publishing</option>
+                    <label className="block text-sm font-medium mb-2">Preferred Date</label>
+                    <input 
+                      type="date"
+                      name="date"
+                      value={formData.date}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2 rounded-lg bg-white/5 border border-gray-700 focus:border-blue-500 outline-none"
+                      min={new Date().toISOString().split('T')[0]}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Available Time Slots</label>
+                    <div className="grid grid-cols-2 gap-3">
+                      {timeSlots.map((time) => (
+                        <motion.button
+                          key={time}
+                          type="button"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={() => handleTimeSelect(time)}
+                          className={`px-4 py-2 rounded-lg border ${
+                            selectedTime === time 
+                              ? 'border-blue-500 bg-blue-500/20' 
+                              : 'border-gray-700 hover:border-blue-500'
+                          } focus:outline-none transition-colors`}
+                        >
+                          {time}
+                        </motion.button>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Topic for Discussion</label>
+                    <select 
+                      name="topic"
+                      value={formData.topic}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2 rounded-lg bg-white/5 border border-gray-700 focus:border-blue-500 outline-none"
+                    >
+                      <option>Web Development Consultation</option>
+                      <option>Graphic Design Project</option>
+                      <option>Marketing Strategy</option>
+                      <option>Book Publishing Guide</option>
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Message</label>
+                    <label className="block text-sm font-medium mb-2">Additional Notes</label>
                     <textarea 
-                      rows="4"
+                      name="notes"
+                      value={formData.notes}
+                      onChange={handleInputChange}
+                      rows="3"
                       className="w-full px-4 py-2 rounded-lg bg-white/5 border border-gray-700 focus:border-blue-500 outline-none"
+                      placeholder="Brief description of what you'd like to discuss"
                     ></textarea>
                   </div>
                   <div className="flex gap-4">
@@ -146,7 +284,7 @@ const Contact = () => {
                       className="flex-1 px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg font-medium"
                       type="submit"
                     >
-                      Send Message
+                      Schedule Meeting
                     </motion.button>
                   </div>
                 </motion.div>
