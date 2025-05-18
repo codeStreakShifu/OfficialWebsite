@@ -29,7 +29,7 @@ const Header = () => {
         backdropFilter: 'blur(8px)'
       }}
     >
-      <div className="container mx-auto flex items-center justify-between py-2 md:py-4 px-4 md:px-6">
+      <div className="container mx-auto flex items-center justify-between py-7 md:py-4 px-4 md:px-6">
         <Link to="/" className="flex items-center gap-1 sm:gap-2">
           <img 
             src={logo} 

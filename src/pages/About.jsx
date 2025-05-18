@@ -17,16 +17,16 @@ const About = () => {
           transition={{ duration: 1.5 }}
           className="absolute inset-0"
         >
-          <img 
+          <img
             src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3"
             alt="Team collaboration"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-gray-900/70 to-gray-900/90" />
         </motion.div>
-        
+
         {/* Added About Us Text */}
-        <motion.div 
+        <motion.div
           className="absolute inset-0 flex items-center justify-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -40,13 +40,21 @@ const About = () => {
 
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Company Introduction */}
-        <motion.div 
+        <motion.div
           className="mb-24"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-5xl md:text-7xl font-bold text-yellow-400 tracking-wider pb-8">
+          <h1 className="text-5xl md:text-7xl font-bold text-gray-300 tracking-wider text-center pb-8"
+            style={{
+              background: "linear-gradient(to right,rgb(248, 182, 0),rgb(180, 121, 42))",
+              WebkitBackgroundClip: "text", 
+              WebkitTextFillColor: "transparent",
+              fontFamily: "serif",
+              fontWeight: 1050,
+            }}
+          >
             About VoxEdition Works Inc.
           </h1>
           <div className="grid md:grid-cols-2 gap-12 items-start">
@@ -63,7 +71,7 @@ const About = () => {
                 Founded with a passion for visual excellence and purposeful communication, Voxedition Works transforms ideas into powerful digital and print experiences. From brand identity and web design to publishing, marketing campaigns, and multimedia production, we deliver tailor-made solutions that drive visibility, engagement, and growth.
               </p>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -78,9 +86,9 @@ const About = () => {
               </p>
             </motion.div>
           </div>
-          
+
           {/* Decorative Line */}
-          <motion.div 
+          <motion.div
             className="w-full h-px bg-gradient-to-r from-transparent via-gray-500 to-transparent my-16"
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
@@ -89,7 +97,7 @@ const About = () => {
         </motion.div>
 
         {/* Vision Section */}
-        <motion.div 
+        <motion.div
           className="mb-20 text-center relative"
           {...fadeIn}
         >
@@ -107,7 +115,7 @@ const About = () => {
         </motion.div>
 
         {/* Mission Section with Side Image */}
-        <motion.div 
+        <motion.div
           className="mb-20 grid md:grid-cols-2 gap-8 items-center"
           {...fadeIn}
           transition={{ delay: 0.2 }}
@@ -120,7 +128,7 @@ const About = () => {
               At Voxedition Works, our mission is to help creators, businesses, and brands scale with purpose and impact. Through tailored strategies, sleek design, compelling content, and cutting-edge digital experiences, we bring ideas to life and turn visions into reality.
             </p>
           </div>
-          <motion.div 
+          <motion.div
             className="order-1 md:order-2"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
@@ -134,7 +142,7 @@ const About = () => {
         </motion.div>
 
         {/* Core Goals Section */}
-        <motion.div 
+        <motion.div
           className="mb-16"
           {...fadeIn}
           transition={{ delay: 0.4 }}
@@ -185,8 +193,8 @@ const About = () => {
                 viewport={{ once: true }}
               >
                 <div className="flex gap-4 items-start">
-                  <img 
-                    src={goal.icon} 
+                  <img
+                    src={goal.icon}
                     alt={goal.title}
                     className="w-16 h-16 rounded-lg object-cover"
                   />

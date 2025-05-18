@@ -1,4 +1,5 @@
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
@@ -12,8 +13,13 @@ import BookPublishing from "./pages/services/BookPublishing";
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 import "./index.css"; // Import your global CSS file
+import initAOS from "./utils/aos";
 
 function App() {
+  useEffect(() => {
+    initAOS();
+  }, []);
+
   return (
     <Router>
       <div className="flex flex-col min-h-screen w-full overflow-x-hidden">
