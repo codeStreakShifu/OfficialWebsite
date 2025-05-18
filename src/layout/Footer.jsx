@@ -38,9 +38,7 @@ const Footer = () => (
   <footer className="relative">
     {/* Hero Image Container */}
     <div className="absolute w-screen transform -translate-y-[90%] left-0 pointer-events-none z-20">
-      <div className="container mx-auto relative px-4 transition-all duration-300"
-        data-aos="fade-up"
-        data-aos-duration="1000"
+      <div className="container mx-auto relative px-4 "
 
 
       >

@@ -8,7 +8,7 @@ const About = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white pt-24 pb-20">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white pt-24 pb-20 ">
       {/* Hero Section with Parallax */}
       <div className="relative h-[40vh] mb-20 overflow-hidden">
         <motion.div
@@ -143,11 +143,11 @@ const About = () => {
 
         {/* Core Goals Section */}
         <motion.div
-          className="mb-16"
+          className="max-w-screen mb-16 min-h-[100vh] bg-gradient-to-b from-gray-900/70 to-gray-900/90 px-8 pt-[4%] rounded-5% lg:pb-[30%] md:pb-[15%] sm:pb-[30%] pb-[20%]"
           {...fadeIn}
           transition={{ delay: 0.4 }}
         >
-          <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+          <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent pt-[4%]">
             🏆 Core Goals
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
