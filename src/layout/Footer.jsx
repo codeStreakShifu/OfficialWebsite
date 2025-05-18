@@ -4,11 +4,11 @@ import logo from "../assets/images/logoText.svg";
 
 const Footer = () => (
   <footer className="modern-footer bg-purple-900/40 text-white py-10 pb-0">
-    <div className="footer-content container mx-auto flex flex-col md:flex-row items-start justify-between px-6">
+    <div className="footer-content container mx-auto flex flex-col md:flex-row items-start justify-between items-center text-center px-6">
       {/* Main Footer Columns */}
       <div className="footer-columns grid grid-cols-1 md:grid-cols-4 gap-10 w-full">
         {/* Company Info Column */}
-        <div className="footer-column">
+        <div className="footer-column flex flex-col justify-center items-center">
           <Link to="/">
             <img src={logo} alt="VoxEdition Works" className="footer-logo h-16 mb-4" />
           </Link>
@@ -59,14 +59,14 @@ const Footer = () => (
         </div>
 
         {/* Contact Info Column */}
-        <div className="footer-column">
+        <div className="footer-column flex flex-col text-left items-center">
           <h3 className="font-bold text-lg mb-4">Contact Us</h3>
           <ul className="contact-info space-y-4">
             <li className="flex items-start space-x-3">
               <FaMapMarkerAlt className="text-indigo-400 text-xl mt-1" />
               <span className="text-gray-300">123 Creative Street, Design District, NY 10001</span>
             </li>
-            <li className="flex items-center space-x-3">
+            <li className="flex items-center space-x-3 " >
               <FaPhone className="text-indigo-400 text-xl" />
               <a href="tel:+1234567890" className="text-gray-300 hover:text-indigo-400 transition-colors">
                 +1 (234) 567-890
