@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from "react-router-dom";
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaMapMarkerAlt, FaPhone, FaEnvelope, FaChevronDown } from "react-icons/fa";
 import logo from "../assets/images/logo.svg";
-import logoText from "../assets/images/logo-v1.png";
+import logoText from "../assets/images/logoText.svg";
 import { div } from 'framer-motion/client';
 
 import hi from "../assets/images/hi.png";
@@ -37,7 +37,7 @@ const FooterColumn = ({ title, children }) => {
 const Footer = () => (
   <footer className="relative"> {/* Added padding top for image space */}
     {/* Hero Image Container */}
-    <div className="absolute w-screen h-[70vh] top-0 left-0 transform -translate-y-[100%]  overflow-visible pointer-events-none z-1000 xl:mt-[5%] lg:mt-[10%] md:mt-[18.5%] sm:mt-[25.5%] xs:mt-[32.5%] mt-[48%]">
+    <div className="absolute w-screen h-[70vh] top-0 left-0 transform -translate-y-[100%]  overflow-visible pointer-events-none z-1000 xl:mt-[5%] lg:mt-[10%] md:mt-[18.5%] sm:mt-[25.5%] xs:mt-[32.5%] mt-[56%]">
       <div className="container mx-auto h-full relative">
         <img
           src={hi}
