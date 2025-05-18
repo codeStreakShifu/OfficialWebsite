@@ -156,8 +156,8 @@ const Footer = () => (
       {/* Bottom Bar */}
       <div className="footer-bottom">
         <div className="footer-bottom-content flex items-center justify-center ">
-          <Link to="/" className="">
-            <img src={logoText} alt="VoxEdition Works" className="footer-logo md:w-9lg md:mb-16 my-8 mt-20 md:mt-6" />
+          <Link to="/" className="max-width-screen mx-auto">
+            <img src={logoText} alt="VoxEdition Works" className="footer-logo md:w-[130%] md:mb-16 my-8 mt-20 md:mt-6" />
           </Link>
 
         </div>
