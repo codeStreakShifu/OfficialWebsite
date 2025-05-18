@@ -35,21 +35,31 @@ const FooterColumn = ({ title, children }) => {
 };
 
 const Footer = () => (
-  <footer className="relative"> {/* Added padding top for image space */}
+  <footer className="relative">
     {/* Hero Image Container */}
-    <div className="absolute w-screen h-[70vh] top-0 left-0 transform -translate-y-[100%]  overflow-visible pointer-events-none z-1000 xl:mt-[5%] lg:mt-[10%] md:mt-[18.5%] sm:mt-[25.5%] xs:mt-[32.5%] mt-[56%]">
-      <div className="container mx-auto h-full relative">
-        <img
-          src={hi}
-          alt=""
-          className="absolute left-1/2 transform -translate-x-1/2 h-full w-[75%] object-scale-down   z-100"
-          style={{ maxHeight: '100%' }} // Fixed height
-        />
+    <div className="absolute w-screen transform -translate-y-[90%] left-0 pointer-events-none z-20">
+      <div className="container mx-auto relative px-4 transition-all duration-300"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+
+
+      >
+        <div className="relative aspect-[16/9] md:aspect-[21/9] w-full max-w-[75vw] mx-auto">
+          <img
+            src={hi}
+            alt=""
+            className="absolute inset-0 w-full h-full object-fit"
+          />
+        </div>
       </div>
     </div>
 
-    <div className="modern-footer bg-purple-900 pt-[6vw]  text-gray-300 relative -z-20">
-      <div className="footer-content container mx-auto px-6 relative z-1">
+    <div className="modern-footer bg-purple-900 relative z-10 pt-[6%] transition-all duration-1500"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+    >
+      <div className="footer-content container mx-auto px-6">
         <div className="footer-columns grid grid-cols-1 md:grid-cols-5 gap-8 w-full">
           {/* Company Info Column - Always visible */}
           <div className="footer-column flex flex-col items-left  text-left md:text-left ">

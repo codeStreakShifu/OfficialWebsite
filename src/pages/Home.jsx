@@ -103,7 +103,7 @@ const Home = () => (
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-        }}      
+        }}
       />
 
       {/* Overlay */}
@@ -118,7 +118,7 @@ const Home = () => (
           transition={{ delay: 0.4, duration: 0.5 }}
         >
           <h1 className="min-w-fit text-[5.3vw] lg:text-6xl font-bold mb-0 lg:mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-yellow-300 to-orange-300 leading-normal py-2 drop-shadow-[0_0_1px_rgba(255,255,255,0.5)]">
-          Inspiring Creators • Scaling Brands
+            Inspiring Creators • Scaling Brands
           </h1>
           <p className="text-[3.5vw] md:text-xl mb-8 text-center max-w-2xl mx-auto text-gray-300" data-aos="fade-up">
             We help brands stand out through sleek design and smart strategy.
@@ -126,7 +126,7 @@ const Home = () => (
           <div className="space-x-4 mb-10">
             <Link to="/contact" >
               <motion.button data-aos="fade-right"
-                className="px-8 py-4 bg-gradient-to-r from-indigo-600 sm:text-[3vw] lg:text-2xl to-purple-600 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-indigo-500/50 transition-ease-in-out duration-1500"
+                className="px-7 py-3 bg-gradient-to-r from-indigo-600 sm:text-[2.5vw] lg:text-2xl to-purple-600 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-indigo-500/50 transition-ease-in-out duration-1500"
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 1 }}
@@ -136,7 +136,7 @@ const Home = () => (
             </Link>
             <Link to="/services">
               <motion.button data-aos="fade-left"
-                className="px-8 py-4 border-2 border-white rounded-full font-semibold hover:bg-white hover:text-gray-900 text-[3vw] lg:text-2xl transition-ease-in-out duration-1500"
+                className="px-7 py-3 border-1 border-white rounded-full font-semibold hover:bg-white hover:text-gray-900 sm:text-[2vw] lg:text-2xl transition-ease-in-out duration-1500"
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 1 }}
@@ -170,14 +170,14 @@ const Home = () => (
               duration={5.5}
               key={service.name}
             >
-              <Link to={service.path} 
+              <Link to={service.path}
                 style={{ textDecoration: 'none' }}
               >
                 <motion.div
                   className={`${service.color} rounded-xl p-8  shadow-xl text-black hover:shadow-2xl duration-2500 transform cursor-pointer backdrop-blur-lg bg-opacity-90`}
                   whileHover={{ scale: 1.1, y: -5 }}
                   transition={{ duration: 0.35 }}
-           
+
                 >
                   {service.icon}
                   <h3 className="text-xl text-black font-semibold mb-2">{service.name}</h3>
@@ -247,9 +247,9 @@ const Home = () => (
               key={client.name}
               whileHover={{ scale: 1.1 }}
             >
-              <img 
-                src={client.logo} 
-                alt={`${client.name} logo`} 
+              <img
+                src={client.logo}
+                alt={`${client.name} logo`}
                 className="h-8 w-auto filter brightness-0 invert opacity-50 hover:opacity-100 transition-all duration-300"
               />
             </motion.div>
@@ -258,16 +258,16 @@ const Home = () => (
       </div>
     </section>
 
-    {/* Newsletter Section */}
-    <section className=" bg-gray-900 md:min-h-[100vh] min-h-[70vh] pt-20">
-      <div className="w-full px-4 max-w-7xl mx-auto pb-150px">
+    {/* Newsletter Section - Updated padding/margin */}
+    <section className="bg-gray-900 lg:min-h-[100vh] md:min-h-[70vh] sm:min-h-[65vh] min-h-[55vh] pt-[6%]">
+      <div className="w-screen px-4 max-w-7xl mx-auto">
         <motion.div
           className="max-w-4xl mx-auto bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 p-6 md:p-12 rounded-3xl backdrop-blur-xl"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h4 className="text-xl md:text-2xl font-semibold mb-3 md:mb-4 text-center">
+          <h4 className="text-2xl md:text-2xl font-semibold mb-3 md:mb-4 text-center">
             Stay Updated
           </h4>
           <p className="text-sm md:text-base text-gray-300 mb-4 md:mb-6 text-center px-2">
@@ -280,7 +280,7 @@ const Home = () => (
               className="w-full md:w-auto flex-grow px-4 md:px-6 py-3 rounded-full md:rounded-r-none bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
             <motion.button
-              className="w-full md:w-auto px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full md:rounded-l-none font-semibold hover:shadow-lg hover:shadow-indigo-500/50 whitespace-nowrap"
+              className="w-full md:w-auto px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full md:rounded-l-none font-semibold hover:shadow-lg hover:shadow-indigo-500/50 whitespace-nowrap mb-xl"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
