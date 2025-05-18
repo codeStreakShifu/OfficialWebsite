@@ -241,7 +241,7 @@ const Home = () => {
             </motion.h1>
             <motion.p
               variants={itemVariant}
-              className="text-[3.5vw] md:text-xl mb-8 text-center max-w-2xl mx-auto text-gray-300"
+              className="text-[3.5vw] md:text-2xl mb-8 text-center max-w-2xl mx-auto text-white-300"
             >
               We help brands stand out through sleek design and smart strategy.
             </motion.p>

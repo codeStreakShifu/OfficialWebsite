@@ -75,7 +75,7 @@ const Footer = () => (
               Socials
             </p>
             <div className="social-links flex space-x-4 mb-8">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
+              <a href="https://www.facebook.com/profile.php?id=61576324054348" target="_blank" rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition-colors">
                 <FaFacebookF className="text-lg" />
               </a>
@@ -83,7 +83,7 @@ const Footer = () => (
                 className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition-colors">
                 <FaTwitter className="text-lg" />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+              <a href="https://www.linkedin.com/company/107119386/admin/dashboard/" target="_blank" rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition-colors">
                 <FaLinkedinIn className="text-lg" />
               </a>

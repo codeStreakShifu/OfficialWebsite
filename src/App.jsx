@@ -23,7 +23,10 @@ function App() {
 
   return (
     <Router>      <div className="flex flex-col min-h-screen w-full overflow-x-hidden cursor-none">
-        <CustomCursor />
+        {/* CustomCursor needs to be outside the main flow with highest z-index */}
+        <div className="fixed inset-0 pointer-events-none z-[9999]">
+          <CustomCursor />
+        </div>
         <Header />
         <main className="flex-grow w-full">
           <Routes>

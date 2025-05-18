@@ -50,7 +50,7 @@ const CustomCursor = () => {
     <>
       {/* Main cursor */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-50"
+        className="fixed top-0 left-0 pointer-events-none z-[99999]"
         animate={{
           x: mousePosition.x - 4,
           y: mousePosition.y - 4,
@@ -63,7 +63,7 @@ const CustomCursor = () => {
 
       {/* Cursor ring */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-50"
+        className="fixed top-0 left-0 pointer-events-none z-[99999]"
         animate={{
           x: mousePosition.x - 16,
           y: mousePosition.y - 16,
