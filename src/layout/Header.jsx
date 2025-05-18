@@ -46,12 +46,12 @@ const Header = () => {
           <img 
             src={logo} 
             alt="Company Logo" 
-            className="h-24 w-auto transition-all duration-300 group-hover:scale-105" 
+            className="h-16 w-auto transition-all duration-300 group-hover:scale-105" 
           />
           <img 
             src={logoText} 
             alt="Company Logo Text" 
-            className="h-24 w-auto transition-all duration-300 group-hover:opacity-80" 
+            className="h-14 w-auto transition-all duration-300 group-hover:opacity-80" 
           />
         </Link>        {/* Hamburger Menu Button */}
         <button
