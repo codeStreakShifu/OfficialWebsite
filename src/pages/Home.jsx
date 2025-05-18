@@ -2,7 +2,8 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import CountUp from "react-countup";
 import { FaPalette, FaChartLine, FaCode, FaBook, FaAward, FaRocket, FaUsers } from "react-icons/fa";
-import bgImage from "../assets/images/homeintro-bg.jpg"; // Adjust path to where you save the image
+import bgImage from "../assets/images/intro-bg.jpg"; // Adjust path to where you save the image
+import ParticlesBackground from "../components/ParticlesBackground";
 
 // Static data for services and stats
 const services = [
@@ -111,6 +112,38 @@ const benefits = [
   }
 ];
 
+const sectionVariants = {
+  hidden: { 
+    opacity: 0,
+    y: 50
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+      when: "beforeChildren",
+      staggerChildren: 0.2
+    }
+  }
+};
+
+const childVariants = {
+  hidden: { 
+    opacity: 0,
+    y: 20
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut"
+    }
+  }
+};
+
 const Home = () => {
   // Add a custom animation variant for staggered children
   const containerVariant = {
@@ -136,8 +169,30 @@ const Home = () => {
     },
   };
 
+  const floatingAnimation = {
+    y: [-5, 5],
+    transition: {
+      duration: 2,
+      repeat: Infinity,
+      repeatType: "reverse",
+      ease: "easeInOut"
+    }
+  };
+
+  const backgroundVariants = {
+    animate: {
+      backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+      transition: {
+        duration: 15,
+        ease: "linear",
+        repeat: Infinity,
+      }
+    }
+  };
+
   return (
-    <div className="w-full overflow-hidden">
+    <div className="relative overflow-hidden">
+      <ParticlesBackground />
       {/* Hero Section */}
       <motion.section
         className="min-h-screen relative bg-gradient-to-b from-gray-900/50 via-gray-800/50 to-gray-900/90 text-white flex items-center justify-center py-20"
@@ -174,10 +229,13 @@ const Home = () => {
             initial="hidden"
             animate="visible"
             className="max-w-screen mx-2xl flex flex-col justify-center items-center text-center"
-          >
-            <motion.h1
+          >            <motion.h1
               variants={itemVariant}
-              className="min-w-fit text-[5.3vw] lg:text-6xl font-bold mb-0 lg:mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-yellow-300 to-orange-300 leading-normal py-2 drop-shadow-[0_0_1px_rgba(255,255,255,0.5)]"
+              className="min-w-fit text-[5.3vw] lg:text-6xl font-bold mb-0 lg:mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-indigo-800 via-purple-400 to-pink-500 hover:from-pink-500 hover:via-purple-400 hover:to-indigo-400 leading-normal py-2 drop-shadow-[3px_3px_4px_rgba(0,0,0,1)] drop-shadow-[0_0_1.2px_rgba(255,255,255,1)]"
+              whileHover={{ 
+                scale: 1.02,
+                transition: { duration: 0.3 }
+              }}
             >
               Inspiring Creators • Scaling Brands
             </motion.h1>
@@ -193,7 +251,7 @@ const Home = () => {
                   className="px-7 py-3 bg-gradient-to-r from-indigo-600 sm:text-[2.5vw] lg:text-2xl to-purple-600 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-indigo-500/50 transition-all duration-300"
                   whileHover={{
                     scale: 1.05,
-                    boxShadow: "0 0 25px rgba(99, 102, 241, 0.5)",
+                    boxShadow: "0 0 25px rgba(99, 102, 241, 0.6)",
                   }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -220,11 +278,11 @@ const Home = () => {
 
       {/* Services Section */}
       <motion.section
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
         className="py-20 bg-gradient-to-b from-gray-900 to-gray-800"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
       >
         <div className="container mx-auto px-4">
           <motion.div
@@ -257,11 +315,11 @@ const Home = () => {
 
       {/* Features/Benefits Section */}
       <motion.section
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
         className="py-20 bg-gradient-to-b from-gray-900 to-gray-800"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
       >
         <div className="container mx-auto px-4">
           <motion.div
@@ -329,7 +387,8 @@ const Home = () => {
                 variants={itemVariant}
                 whileHover={{ scale: 1.05 }}
               >
-                <motion.span
+                <motion.div
+                  animate={floatingAnimation}
                   className="text-4xl md:text-5xl font-bold text-indigo-500"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{
@@ -338,6 +397,7 @@ const Home = () => {
                     transition: {
                       duration: 0.5,
                       ease: "easeOut",
+                      delay: index * 0.2
                     },
                   }}
                   viewport={{ once: true }}
@@ -349,7 +409,7 @@ const Home = () => {
                     separator=", "
                     suffix={stat.suffix}
                   />
-                </motion.span>
+                </motion.div>
                 <motion.p
                   className="text-gray-400 mt-2"
                   initial={{ opacity: 0 }}

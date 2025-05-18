@@ -14,6 +14,7 @@ import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 import "./index.css"; // Import your global CSS file
 import initAOS from "./utils/aos";
+import CustomCursor from "./components/CustomCursor";
 
 function App() {
   useEffect(() => {
@@ -21,8 +22,8 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <div className="flex flex-col min-h-screen w-full overflow-x-hidden">
+    <Router>      <div className="flex flex-col min-h-screen w-full overflow-x-hidden cursor-none">
+        <CustomCursor />
         <Header />
         <main className="flex-grow w-full">
           <Routes>
