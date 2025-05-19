@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-
+import ParticlesBackground from "../components/ParticlesBackground";
 const GOALS = [
   {
     title: "Empower Brands",
@@ -58,14 +58,15 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white pt-24 pb-20">
+      <ParticlesBackground />
       {/* Enhanced Hero Section with Parallax */}
-      <div ref={ref} className="relative h-[60vh] mb-20 overflow-hidden">
+      <div ref={ref} className="h-[40vh] mb-20 ">
         <motion.div
           style={{ y, opacity }}
           initial={{ scale: 1.2 }}
           animate={{ scale: 1 }}
           transition={{ duration: 1.5 }}
-          className="absolute inset-0"
+          className="absolute inset-0 z-1000"
         >
           <img
             src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3"
@@ -97,7 +98,7 @@ const About = () => {
         >
           <div className="text-center">
             <motion.h1
-              className="text-6xl md:text-8xl font-bold text-white tracking-wider mb-4"
+              className="text-6xl md:text-8xl font-bold text-white tracking-wider mb-4 -mt-[45%]"
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{
@@ -117,7 +118,11 @@ const About = () => {
             />
           </div>
         </motion.div>
+
+        
       </div>
+
+      
 
       <div className="container mx-auto px-4 max-w-screen">
         {/* Enhanced Company Introduction */}

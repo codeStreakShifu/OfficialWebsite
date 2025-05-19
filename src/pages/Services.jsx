@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import ParticlesBackground from "../components/ParticlesBackground";
 
 const services = [
 	{
@@ -49,7 +50,8 @@ const cardVariants = {
 };
 
 const Services = () => (
-	<div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white pt-48 pb-20">
+	<div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white pt-48 pb-20 pb-[35%]">
+		<ParticlesBackground />
 		{/* Hero Section */}
 		<motion.div
 			className="container mx-auto px-4 text-center mb-16"

@@ -31,31 +31,37 @@ const Header = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <header 
-      className={`fixed top-0 z-50 w-full cursor-none transition-all duration-300 ${
-        scrolled 
-          ? 'bg-white/80 backdrop-blur-lg shadow-lg' 
-          : 'bg-transparent'
-      }`}
+    <header
+      className={`fixed top-0 z-50 max-w-screen w-full cursor-none transition-all duration-500 ${scrolled
+          ? 'bg-white/80 backdrop-blur-lg shadow-lg'
+          : 'bg-slate-700/40 backdrop-blur-3lg shadow-lg '
+        }`}
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-4 lg:px-8">
-        <Link 
-          to="/" 
+        <Link
+          to="/"
           className="flex items-center gap-2 relative group"
+          style={{
+            filter: 'drop-shadow(1px 1px 2px rgba(255, 255, 255, 0.7))',
+
+          }}
         >
-          <img 
-            src={logo} 
-            alt="Company Logo" 
-            className="h-16 w-auto transition-all duration-300 group-hover:scale-105" 
+          <img
+            src={logo}
+            alt="Company Logo"
+            className="h-16 w-auto transition-all duration-300 group-hover:scale-105"
           />
-          <img 
-            src={logoText} 
-            alt="Company Logo Text" 
-            className="h-14 w-auto transition-all duration-300 group-hover:opacity-80" 
+          <img
+            src={logoText}
+            alt="Company Logo Text"
+            className="h-14 w-auto transition-all duration-300 group-hover:opacity-80"
           />
         </Link>        {/* Hamburger Menu Button */}
         <button
-          className="lg:hidden p-2 rounded-full hover:bg-gray-100/20 transition-all"
+          className={`lg:hidden p-2 rounded-full hover:bg-white-700/90  transition-all  ${scrolled
+              ? 'bg-white/80 backdrop-blur-lg shadow-lg'
+              : 'bg-sky-750/90'
+            }`}
           onClick={toggleMenu}
         >
           <motion.div
@@ -63,9 +69,9 @@ const Header = () => {
             transition={{ duration: 0.2 }}
           >
             {isMenuOpen ? (
-              <FaTimes size={24} className="text-gray-800" />
+              <FaTimes size={24} className="text-gray-800 " />
             ) : (
-              <FaBars size={24} className="text-gray-800" />
+              <FaBars size={24} className="text-gray-800 " />
             )}
           </motion.div>
         </button>
@@ -78,9 +84,9 @@ const Header = () => {
               to={item.to}
               className={({ isActive }) => `
                 relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
-                ${isActive 
-                  ? 'text-indigo-600 bg-white/80 shadow-md' 
-                  : 'text-gray-700 hover:text-indigo-600 hover:bg-white/50'
+                ${isActive
+                  ? 'text-indigo-600 bg-white/80 shadow-md'
+                  : 'text-gray-600 hover:text-indigo-600 hover:bg-white/50'
                 }
               `}
             >
@@ -101,7 +107,7 @@ const Header = () => {
           initial={false}
           animate={isMenuOpen ? "open" : "closed"}
           variants={{
-            open: { 
+            open: {
               x: 0,
               transition: {
                 type: "spring",
@@ -109,7 +115,7 @@ const Header = () => {
                 damping: 30
               }
             },
-            closed: { 
+            closed: {
               x: "100%",
               transition: {
                 type: "spring",
@@ -129,8 +135,8 @@ const Header = () => {
                 onClick={() => setIsMenuOpen(false)}
                 className={({ isActive }) => `
                   w-full text-right px-4 py-3 rounded-lg text-lg font-medium transition-all duration-300
-                  ${isActive 
-                    ? 'text-indigo-600 bg-indigo-50/50' 
+                  ${isActive
+                    ? 'text-indigo-600 bg-indigo-50/50'
                     : 'text-gray-600 hover:text-indigo-600 hover:bg-gray-50/50'
                   }
                 `}

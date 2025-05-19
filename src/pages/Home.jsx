@@ -480,19 +480,21 @@ const Home = () => {
 
       {/* CTA Section */}
       <motion.section
+      
         className="py-24 bg-gradient-to-b from-gray-800 to-gray-900 relative overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
+      
         {/* Animated background elements */}
         <motion.div 
-          className="absolute inset-0 opacity-30"
+          className="absolute inset-0 -z-15 opacity-25"
           animate={{ 
             background: [
-              "linear-gradient(45deg, #4f46e5 0%, #7c3aed 100%)",
-              "linear-gradient(45deg, #7c3aed 0%, #4f46e5 100%)"
+              "linear-gradient(45deg, #4f46e5 0%, #7c3aed 50%)",
+              "linear-gradient(45deg, #7c3aed 0%, #4f46e5 50%)"
             ],
           }}
           transition={{
@@ -502,7 +504,7 @@ const Home = () => {
           }}
         />
 
-        <div className="container mx-auto px-4 relative z-10 sm:min-h-[50vh] lg:h-[70vh] md:min-h-[45vh] min-h-[45vh]">
+        <div className="container mx-auto px-4 relative z-1 sm:min-h-[50vh] lg:h-[70vh] md:min-h-[45vh] min-h-[45vh]">
           <motion.div
             className="max-w-3xl mx-auto text-center"
             initial={{ scale: 0.9, opacity: 0 }}

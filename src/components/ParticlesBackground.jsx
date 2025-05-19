@@ -1,3 +1,4 @@
+import { div } from "framer-motion/client";
 import { useCallback } from "react";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
@@ -9,7 +10,7 @@ const ParticlesBackground = () => {
 
   return (
     <Particles
-      className="absolute inset-0 -z-10"
+      className="absolute inset-0 z-100"
       init={particlesInit}
       options={{
         background: {
@@ -77,6 +78,9 @@ const ParticlesBackground = () => {
       }}
     />
   );
+
+
+ 
 };
 
 export default ParticlesBackground;
