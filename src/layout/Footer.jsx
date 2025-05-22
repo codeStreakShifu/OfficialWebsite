@@ -78,34 +78,34 @@ const Footer = () => (
             </p>
             <div className="social-links flex flex-wrap gap-4 mb-8">
               <a href="https://www.facebook.com/profile.php?id=61576324054348" target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition-colors">
+                className="lg:w-1/5 w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition-colors">
                 <FaFacebookF className="text-lg" />
               </a>
               <a href="https://x.com/VoxEditionWorks" target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition-colors">
+                className="lg:w-1/5 w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition-colors">
                 <FaTwitter className="text-lg" />
               </a>
               <a href="https://www.linkedin.com/company/107119386/admin/dashboard/" target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition-colors">
+                className="lg:w-1/5 w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition-colors">
                 <FaLinkedinIn className="text-lg" />
               </a>
               <a href="https://www.instagram.com/voxeditionwork_official25/" target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition-colors">
+                className="lg:w-1/5 w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition-colors">
                 <FaInstagram className="text-lg" />
               </a>
 
               <a href="https://www.tiktok.com/@voxeditionworks_inc" target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition-colors">
+                className="lg:w-1/5 w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition-colors">
                 <FontAwesomeIcon icon={faTiktok} />
               </a>
 
               <a href="https://www.youtube.com/channel/UCKuWTckwb0gvI-7ePCTnmsA" target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition-colors">
+                className="lg:w-1/5 w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition-colors">
                 <FontAwesomeIcon icon={faYoutube} />
               </a>
 
               <a href="https://www.threads.com/@voxeditionwork_official25" target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition-colors">
+                className="lg:w-1/5 w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition-colors">
                 <FontAwesomeIcon icon={faThreads} />
               </a>
             </div>
