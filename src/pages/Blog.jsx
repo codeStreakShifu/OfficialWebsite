@@ -148,32 +148,38 @@ const Blog = () => {
         </div>
       </motion.div>
 
-      {/* Newsletter Section */}
-      <motion.div 
-        className="container mx-auto px-4 mt-20"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-      >
-        <div className="max-w-2xl mx-auto text-center bg-white/10 backdrop-blur-lg rounded-xl p-8">
-          <h2 className="text-2xl font-bold mb-4">Stay Updated</h2>
-          <p className="text-gray-300 mb-6">Subscribe to our newsletter for the latest insights and updates.</p>
-          <div className="flex gap-4 max-w-md mx-auto">
-            <input 
-              type="email" 
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-2 rounded-lg bg-white/5 border border-gray-700 focus:border-blue-500 outline-none"
-            />
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg font-medium"
-            >
-              Subscribe
-            </motion.button>
-          </div>
+      {/* Newsletter Section - Updated padding/margin */}
+      <section className="bg-gray-900 min-h-fit pt-[10%] pb-[25%]">
+        <div className="w-screen px-4 max-w-7xl mx-auto">
+          <motion.div
+            className="max-w-4xl mx-auto bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 p-6 md:p-12 rounded-3xl backdrop-blur-xl"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h4 className="text-2xl md:text-2xl font-semibold mb-3 md:mb-4 text-center">
+              Stay Updated
+            </h4>
+            <p className="text-sm md:text-base text-gray-300 mb-4 md:mb-6 text-center px-2">
+              Subscribe to our newsletter for the latest insights and trends.
+            </p>
+            <div className="flex flex-col md:flex-row gap-3 md:gap-0 max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="w-full md:w-auto flex-grow px-4 md:px-6 py-3 rounded-full md:rounded-r-none bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+              <motion.button
+                className="w-full md:w-auto px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full md:rounded-l-none font-semibold hover:shadow-lg hover:shadow-indigo-500/50 whitespace-nowrap mb-xl"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Subscribe
+              </motion.button>
+            </div>
+          </motion.div>
         </div>
-      </motion.div>
+      </section>
     </div>
   );
 };
