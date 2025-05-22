@@ -423,24 +423,43 @@ const Home = () => {
             ))}
           </motion.div>
         </div>
-      </motion.section>
-
-      {/* Trusted By Section */}
-      <section className="py-16 bg-gray-800">
-        <div className="w-full px-4 max-w-7xl mx-auto">
-          <h3 className="text-center text-xl text-gray-400 mb-8">
+      </motion.section>      {/* Trusted By Section */}
+      <section className="py-16 bg-gray-800 overflow-hidden">
+        <div className="w-full max-w-[90vw] mx-auto">
+          <h3 className="text-center text-2xl text-gray-400 mb-8">
             Trusted by Industry Leaders
           </h3>
-          <div className="flex flex-wrap justify-center items-center gap-12">
-            {clients.map((client) => (
-              <motion.div key={client.name} whileHover={{ scale: 1.1 }}>
-                <img
-                  src={client.logo}
-                  alt={`${client.name} logo`}
-                  className="h-8 w-auto filter brightness-0 invert opacity-50 hover:opacity-100 transition-all duration-300"
-                />
-              </motion.div>
-            ))}
+          <div className="relative">
+            <motion.div
+              className="flex space-x-12"
+              animate={{
+                x: [0, -50 * clients.length * 16], // Adjust based on logo width
+              }}
+              transition={{
+                x: {
+                  duration: 60,
+                  repeat: Infinity,
+                  ease: "linear",
+                },
+              }}
+              style={{
+                width: "fit-content"
+              }}
+            >
+              {[...clients, ...clients, ...clients, ...clients].map((client, index) => (
+                <motion.div
+                  key={`${client.name}-${index}`}
+                  className="flex-shrink-0 w-[200px]"
+                  whileHover={{ scale: 1.1, zIndex: 1 }}
+                >
+                  <img
+                    src={client.logo}
+                    alt={`${client.name} logo`}
+                    className="h-8 w-auto filter brightness-0 invert opacity-50 hover:opacity-100 transition-all duration-300"
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>
