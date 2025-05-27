@@ -54,11 +54,7 @@ const Footer = () => (
       </div>
     </div>
 
-    <div className="modern-footer bg-purple-900 relative z-10 pt-[6%] transition-all duration-1500"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-    >
+    <div className="modern-footer bg-purple-900 relative z-10 pt-[6%] transition-all duration-1500">
       <div className="footer-content container mx-auto px-6">
         <div className="footer-columns grid grid-cols-1 md:grid-cols-5 gap-8 w-full">
           {/* Company Info Column - Always visible */}
@@ -132,23 +128,35 @@ const Footer = () => (
             </ul>
           </FooterColumn>
 
-          {/* Contact Info Column */}
-          <FooterColumn title="Policy">
+          {/* Policies Column */}
+          <FooterColumn title="Legal">
             <div className="flex flex-col text-left justify-left space-y-2">
-              <Link to="/privacy-policy" className="text-sm text-gray-400 hover:text-indigo-400 transition-colors">
-                Privacy Policy
+              <Link
+                to="/privacy-policy"
+                className="text-sm text-gray-400 hover:text-indigo-400 transition-colors group flex items-center"
+              >
+                <span>Privacy Policy</span>
+                <span className="w-0 group-hover:w-full h-[1px] bg-indigo-400 transition-all duration-300" />
               </Link>
-              <Link to="/terms" className="text-sm text-gray-400 hover:text-indigo-400 transition-colors">
-                Terms of Service
+              <Link
+                to="/terms"
+                className="text-sm text-gray-400 hover:text-indigo-400 transition-colors group flex items-center"
+              >
+                <span>Terms of Service</span>
+                <span className="w-0 group-hover:w-full h-[1px] bg-indigo-400 transition-all duration-300" />
               </Link>
-              <Link to="/cookies" className="text-sm text-gray-400 hover:text-indigo-400 transition-colors">
-                Cookie Policy
+              <Link
+                to="/cookies"
+                className="text-sm text-gray-400 hover:text-indigo-400 transition-colors group flex items-center"
+              >
+                <span>Cookie Policy</span>
+                <span className="w-0 group-hover:w-full h-[1px] bg-indigo-400 transition-all duration-300" />
               </Link>
             </div>
           </FooterColumn>
 
-          {/* Contact Info Column */}
-          <FooterColumn title="Contact Us" >
+          {/* Contact Column */}
+          <FooterColumn title="Contact Us">
             <ul className="contact-info space-y-4 text-left md:text-left text-sm">
               <li className="flex flex-col sm:flex-row items-center sm:items-start space-y-2 sm:space-y-0 sm:space-x-3">
                 <FaMapMarkerAlt className="text-indigo-400 text-xl" />
@@ -170,20 +178,22 @@ const Footer = () => (
           </FooterColumn>
         </div>
       </div>
-      {/* Bottom Bar */}
-      <div className="footer-bottom">
-        <div className="footer-bottom-content flex items-center justify-center ">
-          <Link to="/" className="max-width-screen mx-auto">
-            <img src={logoText} alt="VoxEdition Works" className="footer-logo md:w-[130%] md:mb-16 my-8 mt-20 md:mt-6" />
-          </Link>
 
+      {/* Footer Bottom */}
+      <div className="footer-bottom border-t border-gray-800 mt-12">
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <Link to="/" className="mb-4 md:mb-0">
+              <img src={logoText} alt="VoxEdition Works" className="h-8" />
+            </Link>
+            <p className="text-sm text-gray-400">
+              © {new Date().getFullYear()} VoxEdition Works. All rights reserved.
+            </p>
+          </div>
         </div>
       </div>
-
     </div>
   </footer>
-
-
 );
 
 export default Footer;

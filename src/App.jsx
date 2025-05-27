@@ -15,6 +15,9 @@ import Footer from "./layout/Footer";
 import "./index.css"; // Import your global CSS file
 import initAOS from "./utils/aos";
 import CustomCursor from "./components/CustomCursor";
+import PrivacyPolicy from "./pages/policies/PrivacyPolicy";
+import TermsOfService from "./pages/policies/TermsOfService";
+import CookiePolicy from "./pages/policies/CookiePolicy";
 
 function App() {
   useEffect(() => {
@@ -22,8 +25,8 @@ function App() {
   }, []);
 
   return (
-    <Router>      <div className="flex flex-col min-h-screen w-full overflow-x-hidden cursor-none">
-        {/* CustomCursor needs to be outside the main flow with highest z-index */}
+    <Router>
+      <div className="flex flex-col min-h-screen w-full overflow-x-hidden cursor-none">
         <div className="fixed inset-0 pointer-events-none z-[9999]">
           <CustomCursor />
         </div>
@@ -40,6 +43,9 @@ function App() {
             <Route path="portfolio" element={<Portfolio />} />
             <Route path="blog" element={<Blog />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="terms" element={<TermsOfService />} />
+            <Route path="cookies" element={<CookiePolicy />} />
           </Routes>
         </main>
         <Footer />
