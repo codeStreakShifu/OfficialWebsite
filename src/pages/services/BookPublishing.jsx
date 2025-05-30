@@ -1,149 +1,169 @@
 import { motion } from "framer-motion";
-import { FaBook, FaPencilAlt, FaRocket, FaPrint } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import ParticlesBackground from "../../components/ParticlesBackground";
 
-const services = [
-  {
-    icon: <FaBook className="text-3xl text-amber-500" />,
-    title: "Editorial Services",
-    description: "Professional editing, proofreading, and manuscript development",
-    image: "https://images.unsplash.com/photo-1550399105-c4db5fb85c18?ixlib=rb-4.0.3"
-  },
-  {
-    icon: <FaPencilAlt className="text-3xl text-emerald-500" />,
-    title: "Cover Design",
-    description: "Eye-catching book covers that capture readers' attention",
-    image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3"
-  },
-  {
-    icon: <FaPrint className="text-3xl text-blue-500" />,
-    title: "Print & Distribution",
-    description: "Global distribution networks for both print and digital formats",
-    image: "https://images.unsplash.com/photo-1576872381149-7847515ce5d8?ixlib=rb-4.0.3"
-  },
-  {
-    icon: <FaRocket className="text-3xl text-purple-500" />,
-    title: "Marketing Support",
-    description: "Strategic book promotion and author platform development",
-    image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-4.0.3"
-  }
+const packages = [
+	{
+		tier: "🌱 Starter Package",
+		name: "Indie Launch",
+		description:
+			"For new authors who want to self-publish under their own name with a professional touch.",
+		price: "949",
+		turnaround: "2-4 weeks",
+		idealFor: "First-time authors",
+		features: [
+			"Manuscript proofreading (grammar, punctuation)",
+			"Three Book Formats (Paperback, Hardback, Kindle/eBook)",
+			"Basic cover design (template-based)",
+			"Publish it under your own imprint",
+		],
+		color: "from-green-400 to-emerald-500",
+	},
+	{
+		tier: "🔥 Professional Package",
+		name: "Brand Builder",
+		description:
+			"For authors who want to establish a credible brand and look professional online.",
+		price: "1,799",
+		turnaround: "3-4 weeks",
+		idealFor: "Serious indie authors",
+		features: [
+			"Line editing (clarity, flow)",
+			"eBook + paperback formatting (ePub + PDF interior layout)",
+			"Custom cover design (2 initial concepts + 2 free revision)",
+			"Personal imprint support + metadata setup",
+			"Upload setup for Amazon and many other eCommerce platforms",
+			"Branded logo for author or imprint",
+			"Advance author website (with domain + contact form)",
+			"Book mockups (2 versions for promo)",
+		],
+		color: "from-purple-400 to-indigo-500",
+		popular: true,
+	},
+	{
+		tier: "🚀 Premium Package",
+		name: "Author Empire",
+		description:
+			"Full-service publishing + branding solution for thought leaders, experts, and pro indie authors.",
+		price: "3,500",
+		turnaround: "8-12 weeks",
+		idealFor: "Professionals, coaches, or entrepreneurs",
+		features: [
+			"Full ebook + print interior formatting (ready for POD)",
+			"Fully custom cover design (3 concepts + up to 3 revisions)",
+			"Setup and optimization for author imprint + copyright registration",
+			"Upload setup for Amazon and many other eCommerce platforms",
+			"Custom author brand logo + brand style guide",
+			"Advance Professional author website (with domain + maintenance)",
+			"Marketing kit with 3D mockups, press release, launch checklist",
+			"Email launch sequence (3-5 emails)",
+			"1-hour publishing + branding strategy call",
+		],
+		color: "from-orange-400 to-pink-500",
+	},
 ];
 
-const BookPublishing = () => (
-  <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white pt-24 pb-20">
-    {/* Hero Section */}
-    <div className="relative h-[60vh] mb-16 overflow-hidden">
-      <motion.div
-        initial={{ scale: 1.2 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 1.5 }}
-        className="absolute inset-0"
-      >
-        <img 
-          src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3"
-          alt="Book Publishing Hero"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/70 to-gray-900/90" />
-      </motion.div>
-      
-      <motion.div 
-        className="absolute inset-0 flex flex-col items-center justify-center text-center px-4"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5 }}
-      >
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent pb-3">
-          Book Publishing
-        </h1>
-        <p className="text-xl md:text-2xl text-gray-300 max-w-3xl">
-          Transform your manuscript into a professionally published book
-        </p>
-      </motion.div>
-    </div>
+const BookPublishing = () => {
+	return (
+		<div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 pt-32 pb-8">
+			<ParticlesBackground />
 
-    {/* Services Grid */}
-    <div className="container mx-auto px-4 mb-20">
-      <div className="grid md:grid-cols-2 gap-8">
-        {services.map((service, index) => (
-          <motion.div
-            key={service.title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.2 }}
-            className="bg-white/10 backdrop-blur-lg rounded-xl overflow-hidden group"
-          >
-            <div className="relative h-48">
-              <img 
-                src={service.image}
-                alt={service.title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900/90" />
-              <div className="absolute bottom-4 left-4 flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-white/10 backdrop-blur-sm">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-semibold">{service.title}</h3>
-              </div>
-            </div>
-            <div className="p-6">
-              <p className="text-gray-300">{service.description}</p>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </div>
+			{/* Hero Section */}
+			<motion.div className="container mx-auto px-4 text-center mb-16">
+				<h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+					Book Publishing Services
+				</h1>
+				<p className="text-xl text-gray-300 max-w-3xl mx-auto">
+					Transform your manuscript into a professionally published book with our
+					comprehensive publishing packages.
+				</p>
+			</motion.div>
 
-    {/* Process Timeline */}
-    <motion.div 
-      className="container mx-auto px-4 mb-20"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-    >
-      <h2 className="text-3xl font-bold mb-12 text-center">Publishing Journey</h2>
-      <div className="grid md:grid-cols-4 gap-8">
-        {[
-          { step: "1", title: "Manuscript Review", color: "amber" },
-          { step: "2", title: "Editorial Process", color: "emerald" },
-          { step: "3", title: "Design & Layout", color: "blue" },
-          { step: "4", title: "Publication", color: "purple" }
-        ].map((phase, index) => (
-          <motion.div
-            key={phase.step}
-            className={`p-6 rounded-xl bg-white/5 border border-${phase.color}-500/30`}
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-          >
-            <div className={`text-4xl font-bold text-${phase.color}-500 mb-2`}>
-              {phase.step}
-            </div>
-            <h3 className="text-xl font-semibold mb-2">{phase.title}</h3>
-          </motion.div>
-        ))}
-      </div>
-    </motion.div>
+			{/* Packages Grid */}
+			<div className="container mx-auto px-4 py-8 pb-[32%]">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+					{packages.map((pkg, index) => (
+						<motion.div
+							key={index}
+							className={`relative rounded-2xl backdrop-blur-lg bg-white/5 border border-gray-700/50 overflow-hidden h-fit ${
+								pkg.popular ? "lg:-mt-4" : ""
+							}`}
+							initial={{ opacity: 0, y: 20 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ delay: index * 0.2 }}
+						>
+							{/* Popular badge */}
+							{pkg.popular && (
+								<div className="absolute top-0 right-0 bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-4 py-1 rounded-bl-lg text-sm font-medium">
+									Popular Choice
+								</div>
+							)}
 
-    {/* CTA Section */}
-    <motion.div 
-      className="container mx-auto px-4 text-center"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-    >
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        className="px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full text-lg font-semibold group relative overflow-hidden"
-      >
-        <span className="relative z-10">Start Your Publishing Journey</span>
-        <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-amber-500 transform transition-transform group-hover:scale-x-[2] group-hover:scale-y-[2.5]"/>
-      </motion.button>
-    </motion.div>
-  </div>
-);
+							{/* Package Content */}
+							<div className="p-6">
+								<div className="text-2xl mb-2">{pkg.tier}</div>
+								<h3
+									className={`text-3xl font-bold mb-3 bg-gradient-to-r ${pkg.color} bg-clip-text text-transparent`}
+								>
+									{pkg.name}
+								</h3>
+								<p className="text-gray-400 mb-4">{pkg.description}</p>
+
+								{/* Price */}
+								<div className="mb-4">
+									<span className="text-4xl font-bold text-white">
+										${pkg.price}
+									</span>
+									<span className="text-gray-400 ml-2">starting at</span>
+								</div>
+
+								{/* Features */}
+								<div className="space-y-3 mb-4">
+									{pkg.features.map((feature, i) => (
+										<div key={i} className="flex items-start">
+											<svg
+												className="w-5 h-5 text-green-400 mr-3 mt-1 flex-shrink-0"
+												fill="none"
+												stroke="currentColor"
+												viewBox="0 0 24 24"
+											>
+												<path
+													strokeLinecap="round"
+													strokeLinejoin="round"
+													strokeWidth="2"
+													d="M5 13l4 4L19 7"
+												/>
+											</svg>
+											<span className="text-gray-300 text-sm">
+												{feature}
+											</span>
+										</div>
+									))}
+								</div>
+
+								{/* Package Details */}
+								<div className="space-y-1 text-sm text-gray-400 mb-4">
+									<div>Turnaround: {pkg.turnaround}</div>
+									<div>Ideal for: {pkg.idealFor}</div>
+								</div>
+
+								{/* CTA Button */}
+								<Link to="/contact" className="block mt-4">
+									<motion.button
+										className={`w-full py-3 rounded-xl bg-gradient-to-r ${pkg.color} text-white font-semibold hover:shadow-lg transition-shadow`}
+										whileHover={{ scale: 1.02 }}
+										whileTap={{ scale: 0.98 }}
+									>
+										Get Started
+									</motion.button>
+								</Link>
+							</div>
+						</motion.div>
+					))}
+				</div>
+			</div>
+		</div>
+	);
+};
 
 export default BookPublishing;
