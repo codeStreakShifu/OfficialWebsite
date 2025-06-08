@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import ParticlesBackground from "../components/ParticlesBackground";
+import logoxibpa from "../assets/images/logoxibpa.png";
 const GOALS = [
   {
     title: "Empower Brands",
@@ -119,10 +120,10 @@ const About = () => {
           </div>
         </motion.div>
 
-        
+
       </div>
 
-      
+
 
       <div className="container mx-auto px-4 max-w-screen">
         {/* Enhanced Company Introduction */}
@@ -168,6 +169,8 @@ const About = () => {
               left: "0%",
             }}
           />
+
+
 
           <div className="grid md:grid-cols-2 gap-12 items-start relative">
             <motion.div
@@ -217,6 +220,38 @@ const About = () => {
             </motion.div>
           </div>
 
+          <motion.div
+            className="bg-white/5 backdrop-blur-lg p-6 rounded-xl border border-indigo-500/20 my-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            whileHover={{ scale: 1.02 }}
+          >
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <motion.div
+                className="relative flex-shrink-0"
+                whileHover={{ rotate: 5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <img
+                  src={logoxibpa}
+                  alt="IBPA Logo"
+                  className="w-32 h-auto object-contain rounded-lg"
+                />
+              </motion.div>
+              <div>
+                <h3 className="text-2xl font-bold mb-3 bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
+                  Proud Member of IBPA
+                </h3>
+                <p className="text-gray-300 leading-relaxed">
+                  We're proud to announce our official membership with the Independent Book Publishers Association (IBPA),
+                  the largest publishing trade association in the United States. This partnership reflects our commitment
+                  to excellence in publishing and adherence to the highest industry standards.
+                </p>
+              </div>
+            </div>
+          </motion.div>
           {/* Enhanced Decorative Line */}
           <motion.div
             className="w-full h-px my-16 relative overflow-hidden"
@@ -404,8 +439,8 @@ const About = () => {
               >
                 <motion.div
                   className={"absolute w-full inset-0 bg-gradient-to-br " + goal.gradient + " opacity-0 group-hover:opacity-100 transition-opacity duration-1000"}
-                  initial={{ rotate: 0, scale: 1}}
-                  whileHover={{ rotate: 720, scale: 1}}
+                  initial={{ rotate: 0, scale: 1 }}
+                  whileHover={{ rotate: 720, scale: 1 }}
                   transition={{ duration: 0.5, ease: "easeInOut" }}
                 />
                 <div className="relative z-10 flex flex-col sm:flex-row gap-4 items-center sm:items-start">

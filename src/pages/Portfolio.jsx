@@ -29,10 +29,25 @@ const projects = [
     category: "web",
     image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3",
     description: "Intuitive mobile application for fitness tracking"
+  },
+  {
+    id: 5,
+    title: "Frankfurt Book Fair",
+    category: "publishing",
+    image: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixlib=rb-4.0.3",
+    description: "Our showcase at the world's largest trade fair for books, connecting authors to global opportunities.",
+    fullDescription: `As active participants at the Frankfurt Book Fair (Frankfurter Buchmesse), we maintain a strong 
+    presence at the world's most significant trading place for content and stories. This prestigious event allows us to:
+    
+    • Connect our authors with international publishers
+    • Stay current with global publishing trends
+    • Network with industry leaders
+    • Showcase our latest publications
+    • Explore rights and licensing opportunities`
   }
 ];
 
-const categories = ["all", "branding", "web", "marketing"];
+const categories = ["all", "branding", "web", "marketing", "publishing"];
 
 const Portfolio = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -105,7 +120,7 @@ const Portfolio = () => {
         className="container mx-auto px-4"
         layout
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-[35%]">
           {filteredProjects.map((project) => (
             <motion.div
               key={project.id}
@@ -138,7 +153,7 @@ const Portfolio = () => {
       {selectedProject && (
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          animate={{ opacity: 1 }} 
           className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
           onClick={() => setSelectedProject(null)}
         >
@@ -153,8 +168,24 @@ const Portfolio = () => {
               className="w-full h-96 object-cover"
             />
             <div className="p-8">
-              <h2 className="text-3xl font-bold mb-4">{selectedProject.title}</h2>
-              <p className="text-gray-300">{selectedProject.description}</p>
+              <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
+                {selectedProject.title}
+              </h2>
+              <p className="text-gray-300 leading-relaxed whitespace-pre-line">
+                {selectedProject.fullDescription || selectedProject.description}
+              </p>
+              {selectedProject.category === 'publishing' && (
+                <div className="mt-6 flex items-center gap-4">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Frankfurter_Buchmesse_Logo.svg/1280px-Frankfurter_Buchmesse_Logo.svg.png"
+                    alt="Frankfurt Book Fair Logo"
+                    className="h-12 bg-white/90 rounded-lg p-2"
+                  />
+                  <span className="text-sm text-gray-400">
+                    Official Fair Participant
+                  </span>
+                </div>
+              )}
             </div>
           </motion.div>
         </motion.div>

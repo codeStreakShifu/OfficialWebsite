@@ -9,20 +9,20 @@ const contactInfo = [
   {
     icon: <FaPhone className="text-2xl text-blue-400" />,
     title: "Phone",
-    details: "+1 (555) 123-4567",
-    link: "tel:+15551234567"
+    details: "+1 (771) 222-4870",
+    link: "tel:+17712224870"
   },
   {
     icon: <FaEnvelope className="text-2xl text-green-400" />,
     title: "Email",
-    details: "hello@voxedition.com",
-    link: "mailto:hello@voxedition.com"
+    details: "support@voxedition.com",
+    link: "mailto:support@voxedition.com"
   },
   {
     icon: <FaMapMarkerAlt className="text-2xl text-red-400" />,
     title: "Location",
-    details: "123 Creative Street, Design District",
-    link: "https://maps.google.com"
+    details: "2039 2001 L Street N.W., Suite 500 Washington, DC 20036 United States",
+    link: "https://maps.app.goo.gl/1AAF3roZb7p8W9MFA"
   },
   {
     icon: <FaClock className="text-2xl text-purple-400" />,
@@ -322,10 +322,10 @@ const Contact = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
-          className="mt-16 pb-[20%]"
+          className="mt-16 pb-[35%]"
         >
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.305935303!2d-74.25986548248684!3d40.69714941932609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1645756805974!5m2!1sen!2s"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6209.745612127252!2d-77.0500734104179!3d38.90402387341291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b7b763438acb%3A0x1fc9d3ddf2940ef9!2s2001%20L%20St%20NW%2C%20Washington%2C%20DC%2020036%2C%20USA!5e0!3m2!1sen!2sph!4v1749354244489!5m2!1sen!2sph"
             className="w-full h-96 rounded-xl"
             style={{ border: 0 }}
             allowFullScreen=""

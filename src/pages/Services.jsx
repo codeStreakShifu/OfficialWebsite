@@ -100,6 +100,67 @@ const Services = () => (
 			</motion.div>
 		</div>
 
+		{/* IBPA Membership & Frankfurt Book Fair Section */}
+		<motion.div
+			className="container mx-auto px-4 mb-16"
+			initial={{ opacity: 0, y: 20 }}
+			animate={{ opacity: 1, y: 0 }}
+			transition={{ delay: 0.7 }}
+		>
+			<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+				{/* IBPA Membership */}
+				<motion.div
+					className="bg-white/5 backdrop-blur-lg p-6 rounded-2xl border border-purple-500/20 group hover:border-purple-500/40 transition-colors"
+					whileHover={{ y: -5 }}
+				>
+					<div className="flex items-start gap-6">
+						<div className="flex-shrink-0">
+							<img
+								src="https://publishingperspectives.com/wp-content/uploads/2015/04/IBPA-logo.jpg"
+								alt="IBPA Logo"
+								className="w-24 h-auto object-contain bg-white/90 rounded-lg p-2"
+							/>
+						</div>
+						<div>
+							<h3 className="text-xl font-bold mb-2 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
+								Official IBPA Member
+							</h3>
+							<p className="text-gray-300 text-sm leading-relaxed">
+								As members of the Independent Book Publishers Association, we uphold the highest
+								standards in publishing and follow industry best practices to deliver exceptional
+								quality to our authors.
+							</p>
+						</div>
+					</div>
+				</motion.div>
+
+				{/* Frankfurt Book Fair */}
+				<motion.div
+					className="bg-white/5 backdrop-blur-lg p-6 rounded-2xl border border-blue-500/20 group hover:border-blue-500/40 transition-colors"
+					whileHover={{ y: -5 }}
+				>
+					<div className="flex items-start gap-6">
+						<div className="flex-shrink-0">
+							<img
+								src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Frankfurter_Buchmesse_Logo.svg/1280px-Frankfurter_Buchmesse_Logo.svg.png"
+								alt="Frankfurt Book Fair Logo"
+								className="w-24 h-auto object-contain bg-white/90 rounded-lg p-2"
+							/>
+						</div>
+						<div>
+							<h3 className="text-xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">
+								Frankfurt Book Fair Partner
+							</h3>
+							<p className="text-gray-300 text-sm leading-relaxed">
+								Our presence at the world's largest trade fair for books connects our authors
+								to global opportunities and keeps us at the forefront of publishing innovation.
+							</p>
+						</div>
+					</div>
+				</motion.div>
+			</div>
+		</motion.div>
+
 		{/* Enhanced Services Grid */}
 		<motion.div className="container mx-auto px-4 py-12" layout>
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
