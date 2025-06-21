@@ -31,9 +31,9 @@ const services = [
 		gradient: "from-green-600/20 via-transparent to-transparent",
 	},
 	{
-		name: "Book Publishing",
+		name: "Book Designing & Distribution",
 		path: "/services/book-publishing",
-		desc: "Transform your manuscript into a professionally published book with our comprehensive publishing services.",
+		desc: "Transform your idea into a legacy. We handle everything from design to distribution, ensuring your work reaches readers worldwide.",
 		icon: "https://images.unsplash.com/photo-1550399105-c4db5fb85c18?ixlib=rb-4.0.3&w=400",
 		color: "from-orange-500 to-yellow-500",
 		gradient: "from-orange-600/20 via-transparent to-transparent",

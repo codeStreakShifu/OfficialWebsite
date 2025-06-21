@@ -124,7 +124,7 @@ const Footer = () => (
               <li><Link to="/services/web-development" className="text-gray-400 hover:text-indigo-400 transition-colors">Web Development</Link></li>
               <li><Link to="/services/graphic-design" className="text-gray-400 hover:text-indigo-400 transition-colors">Graphic Design</Link></li>
               <li><Link to="/services/marketing" className="text-gray-400 hover:text-indigo-400 transition-colors">Marketing Strategy</Link></li>
-              <li><Link to="/services/book-publishing" className="text-gray-400 hover:text-indigo-400 transition-colors">Book Publishing</Link></li>
+              <li><Link to="/services/book-publishing" className="text-gray-400 hover:text-indigo-400 transition-colors">Book Designing and Distribution</Link></li>
             </ul>
           </FooterColumn>
 
@@ -171,7 +171,7 @@ const Footer = () => (
               <li className="flex flex-col sm:flex-row items-center sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
                 <FaEnvelope className="text-indigo-400 text-xl" />
                 <a href="mailto:hello@voxedition.com" className="text-gray-400 hover:text-indigo-400 transition-colors">
-                  hello@voxedition.com
+                  admin@voxedition.com
                 </a>
               </li>
             </ul>

@@ -185,14 +185,14 @@ const About = () => {
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
               >
-                Voxedition Works is a full-service creative and digital agency dedicated to empowering brands, creators, and entrepreneurs through innovative design, strategic marketing, and impactful storytelling.
+                VoxEdition Works is a full-service information technology products and services company specializing in creative and digital solutions, dedicated to empowering brands, creators, and entrepreneurs through innovative design and strategic marketing.
               </motion.p>
               <motion.p
                 className="text-xl text-gray-300 leading-relaxed"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
               >
-                Founded with a passion for visual excellence and purposeful communication, Voxedition Works transforms ideas into powerful digital and print experiences. From brand identity and web design to publishing, marketing campaigns, and multimedia production, we deliver tailor-made solutions that drive visibility, engagement, and growth.
+                Founded with a passion for visual excellence and purposeful communication, Voxedition Works transforms ideas into powerful digital experiences and the creation of your legacy. From brand identity and web design to worldwide distribution, marketing campaigns, and multimedia production, we deliver tailor-made solutions that drive visibility, engagement, and growth.
               </motion.p>
             </motion.div>
 
@@ -215,7 +215,7 @@ const About = () => {
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
               >
-                With a team of designers, developers, marketers, writers, and branding experts — all fueled by innovation — Voxedition Works is the go-to partner for businesses ready to make an unforgettable impression in the market.
+                With a team of designers, developers, marketers, and branding experts — all fueled by innovation — Voxedition Works is the go-to partner for businesses ready to make an unforgettable impression in the market.
               </motion.p>
             </motion.div>
           </div>
@@ -324,7 +324,7 @@ const About = () => {
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.2 }}
             >
-              To be the leading creative force empowering brands to communicate boldly, grow strategically, and inspire their audiences through innovative design and storytelling.
+              To be the leading creative force empowering brands to communicate boldly, grow strategically, and inspire their audiences through innovative design and immersive experiences.
             </motion.p>
           </motion.div>
         </motion.div>
