@@ -160,12 +160,12 @@ const Footer = () => (
             <ul className="contact-info space-y-4 text-left md:text-left text-sm">
               <li className="flex flex-col sm:flex-row items-center sm:items-start space-y-2 sm:space-y-0 sm:space-x-3">
                 <FaMapMarkerAlt className="text-indigo-400 text-xl" />
-                <span className="text-gray-400">123 Creative Street, Design District, NY 10001</span>
+                <span className="text-gray-400">PMB 2039, 2001 L St NW Suite 500, Washington, DC 20036, Estados Unidos</span>
               </li>
               <li className="flex flex-col sm:flex-row items-center sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
                 <FaPhone className="text-indigo-400 text-xl" />
                 <a href="tel:+1234567890" className="text-gray-400 hover:text-indigo-400 transition-colors">
-                  +1 (234) 567-890
+                  +1 (771) 222-4870
                 </a>
               </li>
               <li className="flex flex-col sm:flex-row items-center sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
