@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaMapMarkerAlt, FaPhone, FaEnvelope, FaChevronDown } from "react-icons/fa";
 import logo from "../assets/images/logo.svg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTiktok, faYoutube, faThreads } from '@fortawesome/free-brands-svg-icons';
+import { faTiktok, faYoutube, faThreads, faPinterest, faReddit } from '@fortawesome/free-brands-svg-icons';
 import logoText from "../assets/images/logoText.svg";
 import { div } from 'framer-motion/client';
 
@@ -104,6 +104,15 @@ const Footer = () => (
                 className="lg:w-1/5 w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition-colors">
                 <FontAwesomeIcon icon={faThreads} />
               </a>
+              <a href="https://www.pinterest.com/VoxEditionWorksllc/" target="_blank" rel="noopener noreferrer"
+                className="lg:w-1/5 w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition-colors">
+                <FontAwesomeIcon icon={faPinterest} />
+              </a>
+
+              <a href="#" target="_blank" rel="noopener noreferrer"
+                className="lg:w-1/5 w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition-colors">
+                <FontAwesomeIcon icon={faReddit} />
+              </a>
             </div>
           </div>
 
@@ -164,7 +173,7 @@ const Footer = () => (
               </li>
               <li className="flex flex-col sm:flex-row items-center sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
                 <FaPhone className="text-indigo-400 text-xl" />
-                <a href="tel:+1234567890" className="text-gray-400 hover:text-indigo-400 transition-colors">
+                <a href="tel:+17712224870" className="text-gray-400 hover:text-indigo-400 transition-colors">
                   +1 (771) 222-4870
                 </a>
               </li>
