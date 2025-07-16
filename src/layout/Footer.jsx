@@ -119,11 +119,41 @@ const Footer = () => (
           {/* Quick Links Column */}
           <FooterColumn className="font-light text" title="Quick Links">
             <ul className="space-y-2 text-left md:text-left text-sm">
-              <li><Link to="/" className="text-gray-400 hover:text-indigo-400 transition-colors " >Home</Link></li>
-              <li><Link to="/about" className="text-gray-400 hover:text-indigo-400 transition-colors">About Us</Link></li>
-              <li><Link to="/services" className="text-gray-400 hover:text-indigo-400 transition-colors">Services</Link></li>
-              <li><Link to="/portfolio" className="text-gray-400 hover:text-indigo-400 transition-colors">Portfolio</Link></li>
-              <li><Link to="/contact" className="text-gray-400 hover:text-indigo-400 transition-colors">Contact</Link></li>
+              <li>
+                <Link
+                  to="/"
+                  onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "instant" })}
+                  className="text-gray-400 hover:text-indigo-400 transition-colors "
+                >Home</Link>
+              </li>
+              <li>
+                <Link
+                  to="/about"
+                  onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "instant" })}
+                  className="text-gray-400 hover:text-indigo-400 transition-colors"
+                >About Us</Link>
+              </li>
+              <li>
+                <Link
+                  to="/services"
+                  onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "instant" })}
+                  className="text-gray-400 hover:text-indigo-400 transition-colors"
+                >Services</Link>
+              </li>
+              <li>
+                <Link
+                  to="/portfolio"
+                  onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "instant" })}
+                  className="text-gray-400 hover:text-indigo-400 transition-colors"
+                >Portfolio</Link>
+              </li>
+              <li>
+                <Link
+                  to="/contact"
+                  onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "instant" })}
+                  className="text-gray-400 hover:text-indigo-400 transition-colors"
+                >Contact</Link>
+              </li>
             </ul>
           </FooterColumn>
 

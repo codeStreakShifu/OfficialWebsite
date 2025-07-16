@@ -37,7 +37,7 @@ const Header = () => {
   return (
     // Main header container with conditional styling based on scroll position
     <header
-      className={`fixed top-0 z-50 max-w-screen w-full cursor-none transition-all duration-500 ${
+      className={`fixed top-0 z-50 max-w-screen w-full transition-all cursor-pointer duration-500 ${
         scrolled
           ? 'bg-white/80 backdrop-blur-lg shadow-lg' // Scrolled state
           : 'bg-slate-700/40 backdrop-blur-3lg shadow-lg ' // Default state
@@ -105,11 +105,14 @@ const Header = () => {
             <NavLink
               key={item.to}
               to={item.to}
+              onClick={() => {
+                window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+              }}
               className={({ isActive }) => `
                 relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
                 ${isActive
-                  ? 'text-indigo-600 bg-white/80 shadow-md' // Active state
-                  : 'text-gray-600 hover:text-indigo-600 hover:bg-white/50' // Inactive state
+                  ? 'text-indigo-600 bg-white/80 shadow-md'
+                  : 'text-gray-600 hover:text-indigo-600 hover:bg-white/50'
                 }
               `}
             >
@@ -119,6 +122,9 @@ const Header = () => {
           {/* Call-to-action button */}
           <Link
             to="/contact"
+            onClick={() => {
+              window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+            }}
             className="ml-2 px-6 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:text-gray-300 rounded-full text-sm font-medium 
               hover:shadow-lg hover:shadow-indigo-500/30 transition-all duration-300 hover:-translate-y-0.5"
           >
@@ -157,12 +163,15 @@ const Header = () => {
               <NavLink
                 key={item.to}
                 to={item.to}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+                }}
                 className={({ isActive }) => `
                   w-full text-left px-4 py-3 rounded-lg text-lg font-medium transition-all duration-300
                   ${isActive
-                    ? 'text-indigo-600 bg-indigo-50/50' // Active state
-                    : 'text-gray-600 hover:text-indigo-600 hover:bg-gray-50/50' // Inactive state
+                    ? 'text-indigo-600 bg-indigo-50/50'
+                    : 'text-gray-600 hover:text-indigo-600 hover:bg-gray-50/50'
                   }
                 `}
               >
@@ -172,7 +181,10 @@ const Header = () => {
             {/* Mobile CTA Button */}
             <Link
               to="/contact"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={() => {
+                setIsMenuOpen(false);
+                window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+              }}
               className="w-full mt-4 px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 
                 text-white rounded-lg text-lg font-medium text-center hover:shadow-lg 
                 hover:shadow-indigo-500/30 transition-all duration-300"

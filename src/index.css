@@ -59,9 +59,9 @@ button:focus-visible {
 }
 
 /* Cursor styles */
-* {
+/* * {
   cursor: none !important;
-}
+} */
 
 a, button, 
 [role="button"],

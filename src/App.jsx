@@ -14,7 +14,7 @@ import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 import "./index.css"; // Import your global CSS file
 import initAOS from "./utils/aos";
-import CustomCursor from "./components/CustomCursor";
+// import CustomCursor from "./components/CustomCursor";
 import PrivacyPolicy from "./pages/policies/PrivacyPolicy";
 import TermsOfService from "./pages/policies/TermsOfService";
 import CookiePolicy from "./pages/policies/CookiePolicy";
@@ -26,9 +26,10 @@ function App() {
 
   return (
     <Router>
-      <div className="flex flex-col min-h-screen w-full overflow-x-hidden cursor-none">
+      <div className="flex flex-col min-h-screen w-full overflow-x-hidden">
+        {/* Removed cursor-none from main wrapper */}
         <div className="fixed inset-0 pointer-events-none z-[9999]">
-          <CustomCursor />
+          
         </div>
         <Header />
         <main className="flex-grow w-full">
