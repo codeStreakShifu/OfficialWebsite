@@ -10,7 +10,15 @@ import { FaBars, FaTimes } from "react-icons/fa";
 const navItems = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
-  { to: "/services", label: "Services" },
+  {
+    to: "/services", label: "Services",
+    dropdown: [
+      { to: "/services/web-development", label: "Web Development" },
+      { to: "/services/graphic-design", label: "Graphic Design" },
+      { to: "/services/marketing", label: "Marketing Strategy" },
+      { to: "/services/book-publishing", label: "Book Designing and Distribution" },
+    ],
+  },
   { to: "/portfolio", label: "Portfolio" },
   { to: "/blog", label: "Blog" },
   { to: "/contact", label: "Contact" },
@@ -20,6 +28,7 @@ const Header = () => {
   // State for mobile menu and scroll position
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [servicesDropdown, setServicesDropdown] = useState(false);
 
   // Add scroll event listener to handle header appearance
   useEffect(() => {
@@ -37,11 +46,10 @@ const Header = () => {
   return (
     // Main header container with conditional styling based on scroll position
     <header
-      className={`fixed top-0 z-50 max-w-screen w-full transition-all cursor-pointer duration-500 ${
-        scrolled
+      className={`fixed top-0 z-50 max-w-screen w-full transition-all cursor-pointer duration-500 ${scrolled
           ? 'bg-white/80 backdrop-blur-lg shadow-lg' // Scrolled state
           : 'bg-slate-700/40 backdrop-blur-3lg shadow-lg ' // Default state
-      }`}
+        }`}
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-4 lg:px-8">
         {/* Logo and Brand Name */}
@@ -68,22 +76,21 @@ const Header = () => {
 
         {/* Mobile Menu Toggle Button */}
         <button
-          className={`lg:hidden p-2 rounded-full transition-all duration-300 ${
-            scrolled
+          className={`lg:hidden p-2 rounded-full transition-all duration-300 ${scrolled
               ? 'bg-white/80 backdrop-blur-lg shadow-lg border-2 border-gray-900/60' // Scrolled state
               : 'bg-gray-800/40 backdrop-blur-sm border-2 border-white/70' // Default state
-          }`}
+            }`}
           onClick={toggleMenu}
           aria-label="Toggle navigation menu"
         >
           {/* Animated hamburger/close icon */}
           <motion.div
             className="flex items-center justify-center"
-            animate={{ 
+            animate={{
               rotate: isMenuOpen ? 90 : 0,
               scale: isMenuOpen ? 0.9 : 1
             }}
-            transition={{ 
+            transition={{
               duration: 0.2,
               type: "spring",
               stiffness: 260,
@@ -99,26 +106,68 @@ const Header = () => {
         </button>
 
         {/* Desktop Navigation Menu */}
-        <nav className="hidden lg:flex items-center space-x-1 bg-white/10 backdrop-blur-md rounded-full px-2 py-1">
-          {/* Map through navigation items */}
-          {navItems.map((item) => (
-            <NavLink
-              key={item.to}
-              to={item.to}
-              onClick={() => {
-                window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-              }}
-              className={({ isActive }) => `
-                relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
-                ${isActive
-                  ? 'text-indigo-600 bg-white/80 shadow-md'
-                  : 'text-gray-600 hover:text-indigo-600 hover:bg-white/50'
-                }
-              `}
-            >
-              {item.label}
-            </NavLink>
-          ))}
+        <nav className="hidden lg:flex items-center space-x-1 bg-white/40 backdrop-blur-md rounded-full px-2 py-1">
+          {navItems.map((item, idx) =>
+            item.dropdown ? (
+              <div
+                key={item.label}
+                className="relative"
+                onMouseEnter={() => setServicesDropdown(true)}
+                onMouseLeave={() => setServicesDropdown(false)}
+              >
+                <button
+                  className={`
+                    relative rounded-full text-sm font-medium bg-white/10 backdrop-blur-md rounded-full transition-all duration-300 flex items-center gap-1
+                    ${servicesDropdown
+                      ? 'text-indigo-600 bg-white/60'
+                      : 'text-gray-600 hover:text-indigo-600 hover:bg-white/60 backdrop-blur-md'
+                    }
+                  `}
+                  type="button"
+                >
+                  {item.label}
+                  <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+                {/* Dropdown menu */}
+                {servicesDropdown && (
+                  <div className="absolute left-0 top-full mt-2 min-w-[220px] bg-white rounded-xl shadow-xl py-2 z-50 border border-gray-200">
+                    {item.dropdown.map((sub, subIdx) => (
+                      <Link
+                        key={sub.to}
+                        to={sub.to}
+                        onClick={() => {
+                          window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+                          setServicesDropdown(false);
+                        }}
+                        className="block px-5 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 text-sm transition-all"
+                      >
+                        {sub.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                onClick={() => {
+                  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+                }}
+                className={({ isActive }) => `
+                  relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
+                  ${isActive
+                    ? 'text-indigo-600 bg-white/80 shadow-md'
+                    : 'text-gray-600 hover:text-indigo-600 hover:bg-white/50'
+                  }
+                `}
+              >
+                {item.label}
+              </NavLink>
+            )
+          )}
           {/* Call-to-action button */}
           <Link
             to="/contact"

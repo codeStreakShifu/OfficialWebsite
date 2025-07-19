@@ -109,7 +109,7 @@ const Footer = () => (
                 <FontAwesomeIcon icon={faPinterest} />
               </a>
 
-              <a href="#" target="_blank" rel="noopener noreferrer"
+              <a href="https://www.reddit.com/user/According_Name9554/" target="_blank" rel="noopener noreferrer"
                 className="lg:w-1/5 w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition-colors">
                 <FontAwesomeIcon icon={faReddit} />
               </a>
