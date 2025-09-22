@@ -2,11 +2,51 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import CountUp from "react-countup";
 import { FaPalette, FaChartLine, FaCode, FaBook, FaAward, FaRocket, FaUsers } from "react-icons/fa";
-import bgImage from "../assets/images/intro-bg.jpg"; // Adjust path to where you save the image
+import bgImage from "../assets/images/bg2.jpg"; // Adjust path to where you save the image
 import ParticlesBackground from "../components/ParticlesBackground";
 import frankfurt from "../assets/images/logofull.jpg"; // Adjust path to your Frankfurt Book Fair image
+import globe from "../assets/images/ball.png"; // Adjust path to your globe image
+import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/all";
+import { useRef } from "react";
+import gif from "../assets/images/robot.gif"
+import messageGif from "../assets/images/message.gif"
+import heroAsset from "../assets/images/hero-asset1.png"
+import { p } from "framer-motion/client";
+import Particle from "../components/Particle"
+
+gsap.registerPlugin(ScrollTrigger);
 
 // Static data for services and stats
+
+
+
+
+// // Parent animation control
+// const containerVariant1 = {
+//   hidden: { opacity: 0 },
+//   visible: {
+//     opacity: 1,
+//     transition: {
+//       staggerChildren: 0.2, // delay between each letter
+//       repeat: Infinity,
+//     },
+//   },
+// };
+
+// // Child animation for each letter
+// const letterVariant = {
+//   hidden: { y: 0 },
+//   visible: {
+//     y: [0, -20, 0], // move up, then down (wave motion)
+//     transition: {
+//       duration: 1.2,     // wave speed
+//       ease: "back.out(1.7)",
+//       repeat: Infinity,  // loop
+//     },
+//   },
+// };
 const services = [
   {
     icon: "🎨",
@@ -37,6 +77,12 @@ const services = [
     title: "Book Fairs",
     description:
       "Representing authors at major international book fairs including Frankfurt and London.",
+  },
+  {
+    icon: "🗽",
+    title: "Billboard at Times Square",
+    description:
+      "Showcase your brand in the heart of New York City with our premium billboard services. Gain unmatched exposure and captivate millions of viewers daily.",
   },
 ];
 
@@ -168,6 +214,191 @@ const FAIR_IMAGES = {
 
 const Home = () => {
   // Add a custom animation variant for staggered children
+  // const text = "";
+  const globeRef = useRef();
+  const butLeftRef = useRef();
+  const butRightRef = useRef();
+  const h1Ref = useRef();
+  const robotRef = useRef();
+  const pRef = useRef();
+  const heroAssetRef = useRef();
+  const leftSideRef = useRef();
+  useGSAP(() => {
+    gsap.fromTo(
+      h1Ref.current.querySelectorAll("span"),
+      {
+        opacity: 0,
+        y: 20,
+        x: 10,
+        color: "#984aafff"
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.3,
+        letterSpacing: "0.05em",
+        delay: 0.2,       // small delay only at the start
+        color: "#c4d4ffff",
+        stagger: 0.05,
+        ease: "back.out(0)",
+        scale: 1,
+        repeat: -1,       // or any number of repeats you want
+        repeatDelay: 3,   // ⬅️ delay ONLY between repeats
+      }
+    );
+
+
+    gsap.fromTo(
+      pRef.current.querySelectorAll("span"),
+      { opacity: 0, y: -20, x: 10, color: "#984aafff", },
+      {
+        opacity: 1,
+        y: 0,
+        delay: 1,
+        duration: 0.1,
+        color: "#ccccccff",
+        stagger: 0.06,
+        ease: "back.out(0)",
+        scale: 1,
+        repeat: -1,
+        repeatDelay: 5,
+
+      }
+    );
+  }, []);
+
+
+
+  useGSAP(() => {
+
+    // if (!h1Ref.current) return;
+
+    // gsap.to(h1Ref.current, {
+    //   y: 10,
+    //   borderRadius: "100%",
+    //   opacity: 0,
+    //   scale: 0.5,
+    //   scrollTrigger: {
+    //     trigger: h1Ref.current,
+    //     start: "top 20%", // ✅ smoother start
+    //     end: "bottom 10%",
+    //     scrub: true,
+    //   },
+    //   ease: "power1.inOut",
+    // });
+
+    // if (!pRef.current) return;
+
+    // gsap.to(pRef.current, {
+    //   y: 10,
+    //   borderRadius: "100%",
+    //   opacity: 0,
+    //   scale: 0.5,
+    //   scrollTrigger: {
+    //     trigger: pRef.current,
+    //     start: "top 20%", // ✅ smoother start
+    //     end: "bottom 10%",
+    //     scrub: true,
+    //   },
+    //   ease: "power1.inOut",
+    // });
+
+    // if (!butLeftRef.current) return;
+
+    // gsap.to(butLeftRef.current, {
+
+    //   y: 150,
+    //   opacity: 0,
+    //   scrollTrigger: {
+    //     trigger: butLeftRef.current,
+    //     start: "top 30%", // ✅ smoother start
+    //     end: "bottom 25%",
+    //     scrub: true,
+    //   },
+    //   ease: "power1.inOut",
+    // });
+
+    // if (!butRightRef.current) return;
+
+    // gsap.to(butRightRef.current, {
+
+    //   y: 150,
+    //   opacity: 0,
+    //   scrollTrigger: {
+    //     trigger: butRightRef.current,
+    //     start: "top 30%", // ✅ smoother start
+    //     end: "bottom 25%",
+    //     scrub: true,
+    //   },
+    //   ease: "power1.inOut",
+    // });
+
+
+  }, []);
+
+
+
+  useGSAP(() => {
+    if (!heroAssetRef.current) return;
+
+    gsap.to(heroAssetRef.current, {
+      y: -200,
+      x: 500,
+      rotate: 90,
+      opacity: 0,
+      scale: 0.5,
+      scrollTrigger: {
+        trigger: pRef.current,
+        start: "bottom 30%", // ✅ smoother start
+        end: "bottom 20%",
+        scrub: true,
+      },
+      ease: "power1.inOut",
+    });
+
+    if (!leftSideRef.current) return;
+
+    gsap.to(leftSideRef.current, {
+      y: -200,
+      x: -500,
+      rotate: -90,
+      opacity: 0,
+      scale: 0.5,
+      scrollTrigger: {
+        trigger: leftSideRef.current,
+        start: "bottom 40%", // ✅ smoother start
+        end: "bottom 20%",
+        scrub: true,
+      },
+      ease: "power1.inOut",
+    });
+  }, []);
+
+  useGSAP(() => {
+    if (!robotRef.current) return;
+
+    gsap.from(robotRef.current, {
+      x: 250,
+      rotation: 0,
+      opacity: 0,
+      scrollTrigger: {
+        trigger: robotRef.current,
+        start: "top 160%", // ✅ smoother start
+        end: "bottom 10%",
+        scrub: true,
+      },
+      ease: "power1.inOut",
+    });
+  }, []);
+
+  useGSAP(() => {
+
+  }, []);
+
+  useGSAP(() => {
+
+  }, []);
+
   const containerVariant = {
     hidden: { opacity: 0 },
     visible: {
@@ -215,13 +446,19 @@ const Home = () => {
   return (
     <div className="relative overflow-hidden">
       <ParticlesBackground />
+
+
       {/* Hero Section */}
       <motion.section
-        className="min-h-screen relative bg-gradient-to-b from-gray-900/50 via-gray-800/50 to-gray-900/90 text-white flex items-center justify-center py-20"
+        className="min-h-screen relative bg-gradient-to-b from-gray-900/10 via-gray-800/20 to-gray-900/30 text-white flex items-center justify-center py-20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.4 }}
       >
+        <div className="absolute inset-0 z-20">
+          <Particle />
+        </div>
+
         {/* Background Image with parallax effect */}
         <motion.div
           className="absolute inset-0 z-0"
@@ -238,343 +475,113 @@ const Home = () => {
 
         {/* Overlay with gradient animation */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-800/80 to-gray-900/80 z-10"
+          className="absolute inset-0 bg-gradient-to-b from-gray-900/30 via-gray-800/50 to-gray-900/95 z-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
         />
 
         {/* Content */}
-        <div className="w-full px-4 relative z-20">
+        <div className="w-full relative z-20 lg:px-20 px-10 ">
           <motion.div
             variants={containerVariant}
             initial="hidden"
             animate="visible"
-            className="max-w-screen mx-2xl flex flex-col justify-center items-center text-center"
-          >            <motion.h1
-            variants={itemVariant}
-            className="min-w-fit text-[5.3vw] lg:text-6xl font-bold mb-0 lg:mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-indigo-800 via-purple-400 to-pink-500 hover:from-pink-500 hover:via-purple-400 hover:to-indigo-400 leading-normal py-2 drop-shadow-[3px_3px_4px_rgba(0,0,0,1)] drop-shadow-[0_0_1.2px_rgba(255,255,255,1)]"
-            whileHover={{
-              scale: 1.02,
-              transition: { duration: 0.3 }
-            }}
+            className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-10 z-30"
           >
-              Inspiring Creators • Scaling Brands
-            </motion.h1>
-            <motion.p
-              variants={itemVariant}
-              className="text-[3.5vw] md:text-2xl mb-8 text-center max-w-2xl mx-auto text-white-300"
-            >
-              We help brands stand out through sleek design and smart strategy.
-            </motion.p>
-            <motion.div variants={itemVariant} className="space-x-4 mb-10">
-              <Link to="/contact">
-                <motion.button
-                  className="px-7 py-3 bg-gradient-to-r from-indigo-600 sm:text-[2.5vw] lg:text-2xl to-purple-600 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-indigo-500/50 transition-all duration-300"
-                  whileHover={{
-                    scale: 1.05,
-                    boxShadow: "0 0 25px rgba(99, 102, 241, 0.6)",
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Start Your Project
-                </motion.button>
-              </Link>
-              <Link to="/services">
-                <motion.button
-                  className="px-7 py-3 border border-white rounded-full font-semibold hover:bg-white hover:text-gray-900 sm:text-[2vw] lg:text-2xl transition-all duration-300"
-                  whileHover={{
-                    scale: 1.05,
-                    backgroundColor: "rgba(255, 255, 255, 1)",
-                    color: "#111827",
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Explore Services
-                </motion.button>
-              </Link>
-            </motion.div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-
-
-      {/* Join Us Section - Frankfurt Book Fair 2025 */}
-      <motion.section
-        className="py-16 relative overflow-hidden w-full"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-      >
-        {/* Background Image with overlay */}
-        <div className="absolute inset-0 z-0">
-          <div
-            className="absolute inset-0 w-full h-full"
-            style={{
-              backgroundImage: `url(${FAIR_IMAGES.hero})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
-              filter: 'brightness(0.3)',
-            }}
-          />
-        </div>
-
-       
-
-        <div className="container mx-auto px-4 relative z-10 w-full">
-          <motion.div
-            className="max-w-full mx-auto "
-            initial={{ y: 20 }}
-            whileInView={{ y: 0 }}
-            viewport={{ once: true }}
-          >
-            {/* Header */}
-            <motion.div className="text-center mb-8"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              <motion.div
-                className="w-72 h-72 mx-auto transform hover:rotate-2 transition-transform"
-                whileHover={{ 
-                  scale: 1.1,
-                  rotate: 2,
-                  transition: { type: "spring", stiffness: 300 }
-                }}
+            {/* Left: Text */}
+            <div ref={leftSideRef} className="flex-1 text-center lg:text-left lg:mt-20">
+              <h1
+                ref={h1Ref}
+                className="sm:text-[8vw] text-[7vw] md:text-[8vw] lg:text-[3vw] font-retro font-extrabold mb-6
+    bg-clip-text text-transparent bg-gradient-to-r from-indigo-200 via-purple-400 to-pink-500 
+    hover:from-pink-500 hover:via-purple-400 hover:to-indigo-400 leading-tight
+    drop-shadow-[3px_3px_4px_rgba(0,0,0,1)] drop-shadow-[0_0_1.2px_rgba(255,255,255,1)]"
               >
-                <div className="relative">
-                  <img
-                    src={frankfurt}
-                    alt="Frankfurt Book Fair Logo"
-                    className="w-full h-full object-cover rounded-2xl shadow-2xl shadow-purple-500/20 border-2 border-purple-500/20"
-                  />
-                  <div className="absolute -top-4 -right-4 bg-gradient-to-r from-purple-600 to-pink-600 p-3 rounded-xl shadow-lg transform rotate-12">
-                    <span className="text-white font-bold text-sm">Official IBPA Member</span>
+                {["Inspiring Creators", "Scaling Brands"].map((line, lineIndex) => (
+                  <div key={lineIndex}>
+                    {line.split("").map((char, index) => (
+                      <span key={index} className="inline-block py-2 ">
+                        {char === " " ? "\u00A0" : char}
+                      </span>
+                    ))}
                   </div>
-                </div>
-              </motion.div>
-              <div className="space-y-4 mt-8">
-                <div className="flex flex-col items-center gap-2">
-                  <span className="text-sm font-medium text-indigo-400 tracking-wider">OFFICIAL EVENT ANNOUNCEMENT</span>
-                  <h2 className="text-4xl md:text-6xl font-extrabold mb-2 tracking-tight leading-tight">
-                    <span className="block bg-gradient-to-r from-purple-400 via-pink-500 to-indigo-400 bg-clip-text text-transparent font-sans">
-                      VoxEdition Works Presents
-                    </span>
-                    <span className="block text-3xl md:text-5xl mt-2 bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-400 bg-clip-text text-transparent font-serif italic">
-                      Frankfurt Book Fair 2025
-                    </span>
-                  </h2>
-                  <div className="flex items-center gap-3 text-sm text-gray-400">
-                    <span className="px-3 py-1 rounded-full bg-indigo-900/50 border border-indigo-500/20">Official IBPA Member</span>
-                    <span className="px-3 py-1 rounded-full bg-purple-900/50 border border-purple-500/20">Authorized Representative</span>
+                ))}
+              </h1>
+
+              <p
+                ref={pRef}
+                className="text-lg md:text-xl mb-8 font-montserrat font-bold text-gray-300"
+              >
+
+                {["We help brands stand out through sleek design", "and smart marketing strategy."].map((line, lineIndex) => (
+                  <div key={lineIndex}>
+                    {line.split("").map((char, index) => (
+                      <span key={index} className="hidden sm:inline-block py-2">
+                        {char === " " ? "\u00A0" : char}
+                      </span>
+                    ))}
                   </div>
-                </div>
-                <div className="flex items-center justify-center gap-4 text-xl md:text-2xl text-gray-300 font-light tracking-wide mt-6">
-                  <span className="flex items-center gap-2">
-                    <span className="text-pink-400">📍</span>
-                    Frankfurt, Germany
-                  </span>
-                  <span className="text-purple-400">•</span>
-                  <span className="flex items-center gap-2">
-                    <span className="text-indigo-400">📅</span>
-                    October 2025
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Main Content */}
-            <motion.div
-              className="prose prose-invert max-w-none mb-8 w-full"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-            >
-              <p className="text-gray-300 mb-6 leading-relaxed">
-                VoxEdition Works is proud to announce our participation in the Frankfurt Book Fair 2025 — where literary innovation meets global opportunity! As the world's most significant gathering for the publishing industry, this event attracts over 7,000 exhibitors from 100+ countries.
-              </p>
-              <p className="text-gray-300 mb-8 leading-relaxed">
-                Our dedicated team will showcase your books to an elite network of industry leaders, including major bookstore chains, educational institutions, film producers, and international publishing houses. This premier event is your gateway to multiple revenue streams — from retail distribution and academic adoption to potential film/TV adaptations and foreign language rights. Turn your book into a global brand with unprecedented exposure to decision-makers who can take your work to new heights.
-              </p>
-
-              {/* Benefits Grid with updated icons */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                {[{
-                  icon: "🚀",
-                  text: "Global Visibility for Your Book",
-                  subtext: "Present to thousands of professionals from 100+ countries—booksellers, distributors, translators, and media representatives"
-                },
-                {
-                  icon: "🤝",
-                  text: "Direct Access to Global Opportunities",
-                  subtext: "Connect with rights buyers, translation agencies, audiobook producers, and film scouts"
-                },
-                {
-                  icon: "🧠",
-                  text: "Professional Representation",
-                  subtext: "Expert team handling pitch materials, one-sheets, and rights catalogue inclusion"
-                },
-                {
-                  icon: "📚",
-                  text: "Feature in Rights Catalogue",
-                  subtext: "Showcase your title to vetted contacts across global publishing and multimedia platforms"
-                },
-                {
-                  icon: "🎤",
-                  text: "Spotlight Opportunities",
-                  subtext: "Potential inclusion in featured showcases, live readings, and key fair events"
-                },
-                {
-                  icon: "💼",
-                  text: "Added Professional Prestige",
-                  subtext: "Signal international publishing standards and global market positioning"
-                },
-                {
-                  icon: "🌐",
-                  text: "Extended Global Reach",
-                  subtext: "Digital showcase presence before, during, and after the fair"
-                },
-                {
-                  icon: "✈️",
-                  text: "All-Inclusive Representation",
-                  subtext: "Complete management of logistics, promotion, and rights pitching"
-                }
-                ].map((benefit, index) => (
-                  <motion.div
-                    key={index}
-                    className="flex items-start gap-4 p-6 rounded-xl bg-gradient-to-r from-purple-900/20 to-indigo-900/20 hover:from-purple-900/30 hover:to-indigo-900/30 transition-all border border-purple-500/10 hover:border-purple-500/20"
-                    whileHover={{ scale: 1.02, y: -5 }}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 * index }}
-                  >
-                    <span className="text-3xl">{benefit.icon}</span>
-                    <div className="flex flex-col">
-                      <span className="text-gray-100 font-bold mb-2 tracking-wide">{benefit.text}</span>
-                      <span className="text-gray-400 text-sm leading-relaxed">{benefit.subtext}</span>
-                    </div>
-                  </motion.div>
                 ))}
 
-              </div>
+                {"We help brands stand out through sleek design and smart marketing strategy.".split("").map((char, index) => (
+                  <span key={index} className="sm:hidden inline-block">
+                    {char === " " ? "\u00A0" : char}
+                  </span>
+                ))}
 
-              <div className="space-y-8 mb-12">
-                <p className="text-gradient-blue-purple font-medium text-lg leading-relaxed">
-                  🌟 As your dedicated representative at the world's largest book fair, we're offering an exclusive opportunity to showcase your work to over <span className="text-pink-400 font-bold">300,000+ visitors</span> and <span className="text-indigo-400 font-bold">7,000+ industry professionals</span>!
-                </p>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                  <div className="bg-gradient-to-r from-purple-900/30 to-indigo-900/30 p-6 rounded-xl border border-purple-500/20 h-full flex flex-col justify-between relative group overflow-hidden">
-                    {/* Background Image with Overlay */}
-                    <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
-                      <img
-                        src={FAIR_IMAGES.display}
-                        alt="Book Display Area"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    
-                    {/* Content remains the same */}
-                    <h4 className="text-xl font-extrabold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent tracking-tight">
-                      🎯 Your VIP Success Package
-                    </h4>
-                    <ul className="space-y-3 text-gray-300 flex-grow">
-                      <li className="flex items-center space-x-2 hover:text-purple-400 transition-colors text-lg font-medium">
-                        <span className="text-pink-500">✦</span>
-                        <span className="tracking-wide">Premium Book Display in VIP Zone</span>
-                      </li>
-                      <li className="flex items-center space-x-2 hover:text-purple-400 transition-colors text-lg font-medium">
-                        <span className="text-indigo-500">✦</span>
-                        <span className="tracking-wide">Custom Rights Catalog Design</span>
-                      </li>
-                      <li className="flex items-center space-x-2 hover:text-purple-400 transition-colors text-lg font-medium">
-                        <span className="text-pink-500">✦</span>
-                        <span className="tracking-wide">Exclusive Publisher Meetings</span>
-                      </li>
-                      <li className="flex items-center space-x-2 hover:text-purple-400 transition-colors text-lg font-medium">
-                        <span className="text-indigo-500">✦</span>
-                        <span className="tracking-wide">Live Fair Updates & Insights</span>
-                      </li>
-                      <li className="flex items-center space-x-2 hover:text-purple-400 transition-colors text-lg font-medium">
-                        <span className="text-pink-500">✦</span>
-                        <span className="tracking-wide">Professional Media Package</span>
-                      </li>
-                    </ul>
-                  </div>
+              </p>
 
-                  <div className="flex flex-col gap-6">
-                    <div className="bg-gradient-to-r from-pink-900/30 to-purple-900/30 p-8 rounded-xl border border-pink-500/20 relative group overflow-hidden">
-                      {/* Background Image with Overlay */}
-                      <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
-                        <img
-                          src={FAIR_IMAGES.business}
-                          alt="Business Meeting"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      
-                      {/* Content remains the same */}
-                      <span className="text-pink-400 font-bold text-2xl block mb-4">📢 Exclusive Early-Bird Offer</span>
-                      <p className="text-lg leading-relaxed">
-                        <span className="text-gray-200 font-medium tracking-wide">Secure your spot early and receive </span>
-                        <span className="text-indigo-400 font-bold">premium booth positioning</span>
-                        <span className="text-gray-200 font-medium tracking-wide"> plus </span>
-                        <span className="text-pink-400 font-bold">VIP networking event access</span>
-                        <span className="text-gray-200 font-medium tracking-wide">!</span>
-                      </p>
-                    </div>
+              <motion.div variants={itemVariant} className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <Link to="/contact">
+                  <motion.button
+                    id="butLeft"
+                    ref={butLeftRef}
+                    className="animate-float px-7 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-indigo-500/50 transition-all duration-300"
+                    whileHover={{
+                      scale: 1.05,
+                      boxShadow: "0 0 25px rgba(99, 102, 241, 0.6)",
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Start Your Project
+                  </motion.button>
+                </Link>
+                <Link to="/services">
+                  <motion.button
+                    id="butRight"
+                    ref={butRightRef}
+                    className="animate-float px-7 py-3 border border-white rounded-full font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300"
+                    whileHover={{
+                      scale: 1.05,
+                      backgroundColor: "rgba(255, 255, 255, 1)",
+                      color: "#111827",
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Explore Services
+                  </motion.button>
+                </Link>
+              </motion.div>
+            </div>
 
-                    <motion.div 
-                      className="relative group overflow-hidden text-center bg-gradient-to-r from-indigo-900/40 to-purple-900/40 p-8 rounded-xl border border-indigo-500/20"
-                      whileHover={{ scale: 1.02 }}
-                    >
-                      {/* Background Image */}
-                      <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
-                        <img
-                          src={FAIR_IMAGES.networking}
-                          alt="Networking Event"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      
-                      {/* Content remains the same */}
-                      <p className="text-xl bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400 bg-clip-text text-transparent font-bold mb-2">
-                        🚀 Ready to Take Your Book to the World Stage?
-                      </p>
-                      <p className="text-gray-400">Spaces are filling up fast - secure your spot today!</p>
-                    </motion.div>
-                  </div>
-                </div>
+            {/* Right: Hero Image */}
+            <div className="flex-1 flex justify-center lg:justify-end w-[150%] z-30" ref={heroAssetRef}>
+              <img
 
-              </div>
+                src={heroAsset}
+                alt="Hero Asset"
+                className="w-full max-w-[80vw] md:max-w-md lg:max-w-xl h-auto object-contain bg-transparent opacity-8s0 animate-float-header"
+              />
+            </div>
 
-            </motion.div>
-
-            {/* CTA */}
-            <motion.div
-              className="text-center"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.6 }}
-            >
-              <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
-                ✅ Ready to Make an Impact?
-              </h3>
-              <Link to="/contact">
-                <motion.button
-                  className="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-semibold hover:shadow-lg hover:shadow-purple-500/25"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Contact Us About the Fair
-                </motion.button>
-              </Link>
-            </motion.div>
           </motion.div>
         </div>
       </motion.section>
+
+
+
+
 
 
       {/* Services Section */}
@@ -603,7 +610,7 @@ const Home = () => {
             viewport={{ once: true }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            
+
             {services.map((service, index) => (
               <motion.div
                 key={index}
@@ -777,20 +784,30 @@ const Home = () => {
       </section>
 
       {/* Newsletter Section - Updated padding/margin */}
-      <section className="bg-gray-900 min-h-fit py-[10%]">
-        <div className="w-screen px-4 max-w-7xl mx-auto">
+      <section className="bg-gray-900 min-h-fit py-[10%] w-[100vw]">
+        <div className="w-screen px-4 max-w-7xl mx-auto ">
+
           <motion.div
-            className="max-w-4xl mx-auto bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 p-6 md:p-12 rounded-3xl backdrop-blur-xl"
+            className="relative max-w-4xl mx-auto bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 p-6 md:p-12 rounded-3xl backdrop-blur-xl z-10 flex flex-col justify-center items-center overflow-hidden"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
+            {/* GIF above heading */}
+            <img
+              src={messageGif}
+              alt="Message GIF"
+              className="w-20 h-20 mb-4 mix-blend-overlay"
+            />
+
             <h4 className="text-2xl md:text-2xl font-semibold mb-3 md:mb-4 text-center">
               Stay Updated
             </h4>
+
             <p className="text-sm md:text-base text-gray-300 mb-4 md:mb-6 text-center px-2">
               Subscribe to our newsletter for the latest insights and trends.
             </p>
+
             <div className="flex flex-col md:flex-row gap-3 md:gap-0 max-w-md mx-auto">
               <input
                 type="email"
@@ -798,7 +815,7 @@ const Home = () => {
                 className="w-full md:w-auto flex-grow px-4 md:px-6 py-3 rounded-full md:rounded-r-none bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
               <motion.button
-                className="w-full md:w-auto px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full md:rounded-l-none font-semibold hover:shadow-lg hover:shadow-indigo-500/50 whitespace-nowrap mb-xl"
+                className="w-full md:w-auto px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full md:rounded-l-none font-semibold hover:shadow-lg hover:shadow-indigo-500/50 whitespace-nowrap"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -806,7 +823,10 @@ const Home = () => {
               </motion.button>
             </div>
           </motion.div>
+
+          <img ref={robotRef} src={gif} alt="" className="lg:w-[20%] md:w-[25%] w-[35%] h-auto absolute lg:right-[-8%] right-[-15%] md:right-[-12%] rotate-[-45deg] top-[20%] md:top-[24%] lg:top-[23%] xl:top-[22%] mix-blend-screen z-1000 opacity-60" />
         </div>
+
       </section>
 
       {/* CTA Section */}
@@ -851,7 +871,7 @@ const Home = () => {
             >
               <Link
                 to="/contact"
-                className="inline-block px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full font-semibold text-lg hover:shadow-lg hover:shadow-indigo-500/50 transition-all duration-300"
+                className="inline-block px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full font-semibold text-lg hover:shadow-lg hover:shadow-indigo-500/50 hover:text-white transition-all duration-300"
               >
                 Start Your Journey
               </Link>

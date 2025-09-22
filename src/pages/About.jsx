@@ -99,7 +99,7 @@ const About = () => {
         >
           <div className="text-center">
             <motion.h1
-              className="text-6xl md:text-8xl font-bold text-white tracking-wider mb-4 -mt-[45%]"
+              className="text-6xl md:text-8xl font-retro font-bold text-white tracking-wider mb-4 -mt-[45%]"
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{
@@ -135,7 +135,7 @@ const About = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.h1
-            className="max-w-screen text-5xl md:text-7xl font-bold tracking-wider text-center pb-8"
+            className="max-w-screen text-5xl md:text-7xl font-retro font-bold tracking-wider text-center pb-8"
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
@@ -144,7 +144,6 @@ const About = () => {
               background: "linear-gradient(135deg, rgb(248, 182, 0), rgb(180, 121, 42), rgb(255, 168, 0))",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
-              fontFamily: "serif",
               fontWeight: 1050,
             }}
           >

@@ -1,5 +1,9 @@
 import { motion } from "framer-motion";
 import { FaCode, FaMobile, FaRocket, FaCogs } from "react-icons/fa";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/all";
+import { useRef } from "react";
 
 const services = [
   {
@@ -28,7 +32,11 @@ const services = [
   }
 ];
 
+
 const WebDevelopment = () => (
+  
+
+
   <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white pt-24 pb-20">
     {/* Hero Section */}
     <div className="relative h-[60vh] mb-16 overflow-hidden">
@@ -52,11 +60,12 @@ const WebDevelopment = () => (
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
       >
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
+        <h1 className="text-5xl animate-float md:text-7xl font-retro font-bold mb-6 bg-gradient-to-r from-blue-400 to-emerald-100 bg-clip-text text-transparent drop-shadow-[3px_3px_4px_rgba(0,0,0,1)] drop-shadow-[0_0_1.2px_rgba(255,255,255,1)]">
           Web Development
         </h1>
-        <p className="text-xl md:text-2xl text-gray-300 max-w-3xl">
-          Creating powerful digital experiences with cutting-edge technology
+        <p className="text-xl md:text-2xl text-gray-300 max-w-3xl font-montserrat font-bold">
+          
+           Creating powerful digital experiences with cutting-edge technology
         </p>
       </motion.div>
     </div>

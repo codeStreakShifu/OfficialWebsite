@@ -7,28 +7,59 @@ const projects = [
     title: "Brand Identity Design",
     category: "branding",
     image: "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?ixlib=rb-4.0.3",
-    description: "Complete brand identity redesign for a tech startup"
+    description: "Complete brand identity redesign for a tech startup",
+    fullDescription: `We craft unique and memorable brand identities tailored to each client’s vision and audience. 
+    From logos and typography to color systems and style guides, our branding process ensures consistency and recognition. 
+    This service includes:
+    
+    • Logo design and visual identity system  
+    • Brand guidelines for consistent application  
+    • Print and digital collateral designs  
+    • Strategy sessions to align brand voice and story`
   },
   {
     id: 2,
-    title: "E-commerce Platform",
+    title: "Advance Websites",
     category: "web",
     image: "https://images.unsplash.com/photo-1661956602116-aa6865609028?ixlib=rb-4.0.3",
-    description: "Modern e-commerce solution with seamless user experience"
+    description: "Design and develop professional websites tailored for you, showcasing your work with style and functionality.",
+    fullDescription: `Our website solutions are designed to showcase your work and engage your audience. 
+    We build responsive, secure, and visually compelling websites that reflect your goals and identity. 
+    Key features include:
+    
+    • Custom layouts tailored to your needs  
+    • Mobile-first, responsive design  
+    • SEO-friendly structure  
+    • Ongoing maintenance and support`
   },
   {
     id: 3,
     title: "Marketing Campaign",
     category: "marketing",
     image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3",
-    description: "Successful digital marketing campaign for product launch"
+    description: "Successful digital marketing campaign for product launch",
+    fullDescription: `We create and execute powerful marketing campaigns that amplify your message and deliver measurable results. 
+    Using digital channels, storytelling, and data-driven strategies, we ensure every launch makes an impact. 
+    Campaign highlights include:
+    
+    • Multi-channel strategy (social media, ads, email)  
+    • Targeted content and creative assets  
+    • Performance tracking and optimization  
+    • Tailored messaging for your audience`
   },
   {
     id: 4,
-    title: "Mobile App Design",
-    category: "web",
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3",
-    description: "Intuitive mobile application for fitness tracking"
+    title: "Billboard",
+    category: "marketing",
+    image: "https://images.unsplash.com/photo-1505159940484-eb2b9f2588e2?ixlib=rb-4.0.3",
+    description: "Showcase your brand in the heart of New York City with our premium Times Square billboard service.",
+    fullDescription: `Our Times Square billboard service places your brand in one of the most iconic advertising locations in the world. 
+    With millions of daily impressions, your message gains maximum visibility and cultural impact. This premium marketing service allows you to:
+    
+    • Reach a diverse, global audience in the busiest district of New York City  
+    • Strengthen brand prestige by appearing alongside leading international companies  
+    • Create powerful visuals that dominate a world-renowned commercial hub  
+    • Elevate campaigns with unmatched exposure, 24/7 visibility, and high foot traffic`
   },
   {
     id: 5,
@@ -39,13 +70,29 @@ const projects = [
     fullDescription: `As active participants at the Frankfurt Book Fair (Frankfurter Buchmesse), we maintain a strong 
     presence at the world's most significant trading place for content and stories. This prestigious event allows us to:
     
-    • Connect our authors with international publishers
-    • Stay current with global publishing trends
-    • Network with industry leaders
-    • Showcase our latest publications
+    • Connect our authors with international publishers  
+    • Stay current with global publishing trends  
+    • Network with industry leaders  
+    • Showcase our latest publications  
     • Explore rights and licensing opportunities`
+  },
+  {
+    id: 6,
+    title: "Global Distribution",
+    category: "publishing",
+    image: "https://images.unsplash.com/photo-?ixlib=rb-4.0.3", // use a placeholder or find a better image from Unsplash
+    description: "Worldwide distribution to major online and physical retailers.",
+    fullDescription: `Our global distribution service ensures your work reaches audiences everywhere by partnering with major online and offline retailers. 
+  We simplify the process of making your books available worldwide and accessible to readers across markets. 
+  With our network, you can:
+  
+  • Distribute to Amazon, Barnes & Noble, Apple Books, and other major platforms  
+  • Access global print-on-demand and eBook markets  
+  • Manage inventory efficiently with seamless logistics  
+  • Expand your reach and maximize sales potential through trusted retail channels`
   }
 ];
+
 
 const categories = ["all", "branding", "web", "marketing", "publishing"];
 
@@ -67,15 +114,15 @@ const Portfolio = () => {
           transition={{ duration: 1.5 }}
           className="absolute inset-0"
         >
-          <img 
+          <img
             src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3"
             alt="Portfolio Hero"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-gray-900/70 to-gray-900/90" />
         </motion.div>
-        
-        <motion.div 
+
+        <motion.div
           className="absolute inset-0 flex flex-col items-center justify-center text-center px-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -92,7 +139,7 @@ const Portfolio = () => {
 
       {/* Filter Buttons */}
       <div className="container mx-auto px-4 mb-12">
-        <motion.div 
+        <motion.div
           className="flex flex-wrap justify-center gap-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -102,8 +149,8 @@ const Portfolio = () => {
               key={category}
               onClick={() => setSelectedCategory(category)}
               className={`px-6 py-2 rounded-full text-sm font-medium transition-all
-                ${selectedCategory === category 
-                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white' 
+                ${selectedCategory === category
+                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white'
                   : 'bg-white/10 text-gray-300 hover:bg-white/20'
                 }`}
               whileHover={{ scale: 1.05 }}
@@ -116,7 +163,7 @@ const Portfolio = () => {
       </div>
 
       {/* Projects Grid */}
-      <motion.div 
+      <motion.div
         className="container mx-auto px-4"
         layout
       >
@@ -133,7 +180,7 @@ const Portfolio = () => {
               onClick={() => setSelectedProject(project)}
             >
               <div className="relative h-64">
-                <img 
+                <img
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -153,7 +200,7 @@ const Portfolio = () => {
       {selectedProject && (
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }} 
+          animate={{ opacity: 1 }}
           className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
           onClick={() => setSelectedProject(null)}
         >
@@ -162,7 +209,7 @@ const Portfolio = () => {
             className="bg-gray-900 rounded-xl overflow-hidden max-w-4xl w-full"
             onClick={e => e.stopPropagation()}
           >
-            <img 
+            <img
               src={selectedProject.image}
               alt={selectedProject.title}
               className="w-full h-96 object-cover"

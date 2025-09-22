@@ -18,6 +18,8 @@ import initAOS from "./utils/aos";
 import PrivacyPolicy from "./pages/policies/PrivacyPolicy";
 import TermsOfService from "./pages/policies/TermsOfService";
 import CookiePolicy from "./pages/policies/CookiePolicy";
+import Testimonials from "./pages/Testimonials";
+import Gsap from "./pages/Gsap";
 
 function App() {
   useEffect(() => {
@@ -47,6 +49,8 @@ function App() {
             <Route path="privacy-policy" element={<PrivacyPolicy />} />
             <Route path="terms" element={<TermsOfService />} />
             <Route path="cookies" element={<CookiePolicy />} />
+            <Route path="testimonials" element={<Testimonials />} />
+            <Route path="gsap" element={<Gsap />} />
           </Routes>
         </main>
         <Footer />

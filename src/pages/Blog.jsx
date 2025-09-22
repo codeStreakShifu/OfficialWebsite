@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-
+import messageGif from "../assets/images/message.gif";
 const blogPosts = [
   {
     id: 1,
@@ -10,7 +10,7 @@ const blogPosts = [
     image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3",
     excerpt: "Exploring emerging trends in web design and user experience",
     author: {
-      name: "Alex Johnson",
+      name: "Robert Brooks",
       avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3"
     }
   },
@@ -50,9 +50,9 @@ const Blog = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white pt-24 pb-20">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white pt-24 pb-10">
       {/* Hero Section */}
-      <div className="relative h-[40vh] mb-16 overflow-hidden">
+      <div className="relative h-[35vh] mb-16 overflow-hidden">
         <motion.div
           initial={{ scale: 1.2 }}
           animate={{ scale: 1 }}
@@ -83,7 +83,7 @@ const Blog = () => {
       </div>
 
       {/* Category Filter */}
-      <div className="container mx-auto px-4 mb-12">
+      <div className="container mx-auto px-4 mb-30 pb-10">
         <motion.div
           className="flex flex-wrap justify-center gap-4"
           initial={{ opacity: 0, y: 20 }}
@@ -112,7 +112,7 @@ const Blog = () => {
         className="container mx-auto px-4"
         layout
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-20">
           {filteredPosts.map((post) => (
             <motion.article
               key={post.id}
@@ -149,20 +149,30 @@ const Blog = () => {
       </motion.div>
 
       {/* Newsletter Section - Updated padding/margin */}
-      <section className="bg-gray-900 min-h-fit pt-[10%] pb-[25%]">
-        <div className="w-screen px-4 max-w-7xl mx-auto">
+      <section className="bg-gray-900 min-h-fit py-[10%] w-[100vw] pb-[30%]">
+        <div className="w-screen px-4 max-w-7xl mx-auto ">
+
           <motion.div
-            className="max-w-4xl mx-auto bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 p-6 md:p-12 rounded-3xl backdrop-blur-xl"
+            className="relative max-w-4xl mx-auto bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 p-6 md:p-12 rounded-3xl backdrop-blur-xl z-10 flex flex-col justify-center items-center overflow-hidden"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
+            {/* GIF above heading */}
+            <img
+              src={messageGif}
+              alt="Message GIF"
+              className="w-20 h-20 mb-4 mix-blend-overlay"
+            />
+
             <h4 className="text-2xl md:text-2xl font-semibold mb-3 md:mb-4 text-center">
               Stay Updated
             </h4>
+
             <p className="text-sm md:text-base text-gray-300 mb-4 md:mb-6 text-center px-2">
               Subscribe to our newsletter for the latest insights and trends.
             </p>
+
             <div className="flex flex-col md:flex-row gap-3 md:gap-0 max-w-md mx-auto">
               <input
                 type="email"
@@ -170,7 +180,7 @@ const Blog = () => {
                 className="w-full md:w-auto flex-grow px-4 md:px-6 py-3 rounded-full md:rounded-r-none bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
               <motion.button
-                className="w-full md:w-auto px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full md:rounded-l-none font-semibold hover:shadow-lg hover:shadow-indigo-500/50 whitespace-nowrap mb-xl"
+                className="w-full md:w-auto px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full md:rounded-l-none font-semibold hover:shadow-lg hover:shadow-indigo-500/50 whitespace-nowrap"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -178,7 +188,10 @@ const Blog = () => {
               </motion.button>
             </div>
           </motion.div>
+
+          {/* <img ref={robotRef} src={gif} alt="" className="w-[30%] h-auto absolute right-[-12%] rotate-[-38deg] top-[5%] mix-blend-screen z-1000 opacity-50" /> */}
         </div>
+
       </section>
     </div>
   );

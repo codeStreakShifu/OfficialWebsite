@@ -118,7 +118,7 @@ const Footer = () => (
 
           {/* Quick Links Column */}
           <FooterColumn className="font-light text" title="Quick Links">
-            <ul className="space-y-2 text-left md:text-left text-sm">
+            <ul className="space-y-2 text-left md:text-left text-sm hover:text-gray-200">
               <li>
                 <Link
                   to="/"
@@ -147,6 +147,15 @@ const Footer = () => (
                   className="text-gray-400 hover:text-indigo-400 transition-colors"
                 >Portfolio</Link>
               </li>
+               <li>
+                <Link
+                  to="/testimonials"
+                  onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "instant" })}
+                  className="text-gray-400 hover:text-indigo-400 transition-colors"
+                >
+                  Testimonials
+                </Link>
+              </li>
               <li>
                 <Link
                   to="/contact"
@@ -154,6 +163,7 @@ const Footer = () => (
                   className="text-gray-400 hover:text-indigo-400 transition-colors"
                 >Contact</Link>
               </li>
+             
             </ul>
           </FooterColumn>
 
@@ -199,7 +209,7 @@ const Footer = () => (
             <ul className="contact-info space-y-4 text-left md:text-left text-sm">
               <li className="flex flex-col sm:flex-row items-center sm:items-start space-y-2 sm:space-y-0 sm:space-x-3">
                 <FaMapMarkerAlt className="text-indigo-400 text-xl" />
-                <span className="text-gray-400">PMB 2039, 2001 L St NW Suite 500, Washington, DC 20036, Estados Unidos</span>
+                <span className="text-gray-400">1001 S. Main St. STE 600 Kalispell MT 59901</span>
               </li>
               <li className="flex flex-col sm:flex-row items-center sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
                 <FaPhone className="text-indigo-400 text-xl" />

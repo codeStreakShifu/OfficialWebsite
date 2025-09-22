@@ -21,8 +21,8 @@ const contactInfo = [
   {
     icon: <FaMapMarkerAlt className="text-2xl text-red-400" />,
     title: "Location",
-    details: "2039 2001 L Street N.W., Suite 500 Washington, DC 20036 United States",
-    link: "https://maps.app.goo.gl/1AAF3roZb7p8W9MFA"
+    details: "1001 S. Main St. STE 600 Kalispell MT 59901",
+    link: "https://maps.app.goo.gl/4AUbnyrdtYyWmBTq8"
   },
   {
     icon: <FaClock className="text-2xl text-purple-400" />,
@@ -44,6 +44,10 @@ const Contact = () => {
     notes: ''
   });
   const [selectedTime, setSelectedTime] = useState('');
+  const [consent, setConsent] = useState({
+    promotional: false,
+    reminders: false
+  });
 
   const timeSlots = [
     "9:00 AM", "10:00 AM", "11:00 AM",
@@ -68,6 +72,11 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (!consent.promotional || !consent.reminders) {
+      alert('Please accept both consent checkboxes to continue');
+      return;
+    }
 
     try {
       const templateParams = {
@@ -268,6 +277,41 @@ const Contact = () => {
                       placeholder="Brief description of what you'd like to discuss"
                     ></textarea>
                   </div>
+                  <div className="space-y-4 border-t border-gray-700 pt-4 mt-6">
+                    <div className="flex items-start gap-3">
+                      <input
+                        type="checkbox"
+                        id="promotional"
+                        checked={consent.promotional}
+                        onChange={(e) => setConsent(prev => ({...prev, promotional: e.target.checked}))}
+                        className="mt-1 rounded border-gray-700 bg-white/5 text-blue-500 focus:ring-blue-500"
+                      />
+                      <label htmlFor="promotional" className="text-sm text-gray-300">
+                        I agree to receive promotional messages about new products and special offers.
+                      </label>
+                    </div>
+                    
+                    <div className="flex items-start gap-3">
+                      <input
+                        type="checkbox"
+                        id="reminders"
+                        checked={consent.reminders}
+                        onChange={(e) => setConsent(prev => ({...prev, reminders: e.target.checked}))}
+                        className="mt-1 rounded border-gray-700 bg-white/5 text-blue-500 focus:ring-blue-500"
+                      />
+                      <label htmlFor="reminders" className="text-sm text-gray-300">
+                        I consent to receiving appointment reminders via text.
+                      </label>
+                    </div>
+
+                    <p className="text-xs text-gray-400 mt-4">
+                      By providing your phone number you agree to receive informational text messages and calls from VoxEdition Works. 
+                      Consent is not a condition of purchase. Message frequency will vary. Msg & data rates may apply. 
+                      Reply HELP for help or STOP to cancel.
+                      <br /><br />
+                      VoxEdition Works will not share your contact phone number with any other parties.
+                    </p>
+                  </div>
                   <div className="flex gap-4">
                     <motion.button
                       whileHover={{ scale: 1.05 }}
@@ -326,7 +370,7 @@ const Contact = () => {
         >
           
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3104.872984203359!2d-77.0452025!3d38.9040198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b731956e6c4d%3A0xf99381212f32aa5d!2sVoxEdition%20Works%20Solutions%20Inc.!5e0!3m2!1sfil!2sph!4v1750505895223!5m2!1sfil!2sph"
+            src=" https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2659.922852558345!2d-114.3097336!3d48.188837899999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x536650c2d7c55555%3A0xd2c4fe27c68f7c3f!2s1001%20S%20Main%20St%20Ste.%20600%2C%20Kalispell%2C%20MT%2059901%2C%20Estados%20Unidos!5e0!3m2!1sfil!2sph!4v1758018416354!5m2!1sfil!2sph"
             className="w-full h-96 rounded-xl"
             style={{ border: 0 }}
             allowFullScreen=""
@@ -337,5 +381,8 @@ const Contact = () => {
     </div>
   );
 };
+
+           
+
 
 export default Contact;
