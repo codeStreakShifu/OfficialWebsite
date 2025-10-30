@@ -571,7 +571,7 @@ const Home = () => {
 
                 src={heroAsset}
                 alt="Hero Asset"
-                className="w-full max-w-[80vw] md:max-w-md lg:max-w-xl h-auto object-contain bg-transparent opacity-8s0 animate-float-header"
+                className="w-full max-w-[80vw] md:max-w-md lg:max-w-xl h-auto object-contain bg-transparent opacity-60 animate-float-header"
               />
             </div>
 

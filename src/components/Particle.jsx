@@ -10,11 +10,11 @@ export default function TrianglesWithStarsBackground() {
         let stars = [];
         let particles = [];
         let blobs = [];
-        const numStars = 280;
+        const numStars = 380;
         const numParticles = 40;
-        const maxDistance = 150;
         let animationFrameId;
         let blobInterval;
+        let mouse = { x: null, y: null };
 
         function resizeCanvas() {
             canvas.width = canvas.offsetWidth;
@@ -22,6 +22,13 @@ export default function TrianglesWithStarsBackground() {
         }
         resizeCanvas();
         window.addEventListener("resize", resizeCanvas);
+
+        // track mouse
+        canvas.addEventListener("mousemove", (e) => {
+            const rect = canvas.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
+        });
 
         // --- Initialize stars ---
         function createStars() {
@@ -57,77 +64,47 @@ export default function TrianglesWithStarsBackground() {
         createParticles();
 
         // --- Create organic blob ---
-        // --- Create organic blob (no overlap) ---
-        function createBlob() {
+        function createBlob(x = Math.random() * canvas.width, y = Math.random() * canvas.height, size = 280 + Math.random() * 50) {
             const lifetime = 8000; // ms
             const now = Date.now();
-            const padding = 20; // minimum gap between blobs
+            const points = 6 + Math.floor(Math.random() * 5);
+            const variations = Array.from({ length: points }, () => Math.random() * 2 * Math.PI);
 
-            let blob;
-            let safe = false;
-            let tries = 0;
-
-            while (!safe && tries < 50) { // try up to 50 times
-                tries++;
-
-                const points = 6 + Math.floor(Math.random() * 5);
-                const variations = Array.from({ length: points }, () => Math.random() * 2 * Math.PI);
-                const minOpacity = 0.1;
-                const maxOpacity = 0.17;
-
-                blob = {
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    size: 250 + Math.random() * 60,
-                    baseOpacity: minOpacity + Math.random() * (maxOpacity - minOpacity),
-                    angleOffset: Math.random() * Math.PI * 2,
-                    points,
-                    variations,
-                    hue: Math.floor(Math.random() * 360),
-                    vx: (Math.random() - 0.5) * 0.3,
-                    vy: (Math.random() - 0.5) * 0.3,
-                    startTime: now,
-                    lifetime,
-                    endTime: now + lifetime,
-                };
-
-                // check overlap with existing blobs
-                safe = blobs.every(b => {
-                    const dx = b.x - blob.x;
-                    const dy = b.y - blob.y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    return dist > (b.size + blob.size + padding);
-                });
-            }
-
-            if (safe) blobs.push(blob);
+            return {
+                x,
+                y,
+                size,
+                baseOpacity: 0.05 + Math.random() * 0.25, // min/max opacity range
+                angleOffset: Math.random() * Math.PI * 2,
+                points,
+                variations,
+                hue: Math.floor(Math.random() * 360),
+                vx: (Math.random() - 0.5) * 0.3,
+                vy: (Math.random() - 0.5) * 0.3,
+                startTime: now,
+                lifetime,
+                endTime: now + lifetime,
+                lastSplit: 0, // cooldown tracker
+            };
         }
-
 
         // --- Draw organic blob ---
         function drawBlob(blob) {
-            const { x, y, size, baseOpacity, angleOffset, startTime, variations, points, endTime } = blob;
-            const now = Date.now();
-            const elapsed = now - startTime;
-            const remaining = endTime - now;
-            const t = elapsed * 0.002; // smooth oscillation
+            const { x, y, size, baseOpacity, angleOffset, variations, startTime, lifetime } = blob;
+            const t = (Date.now() - startTime) * 0.002;
             const radiusVariation = size / 6;
 
-            // Fade in (first 1s) and fade out (last 1s)
-            const fadeDuration = 1000;
-            let opacity = baseOpacity;
-            if (elapsed < fadeDuration) {
-                opacity *= elapsed / fadeDuration; // fade in
-            } else if (remaining < fadeDuration) {
-                opacity *= remaining / fadeDuration; // fade out
-            }
+            // fade in/out
+            const elapsed = Date.now() - startTime;
+            const fadeIn = Math.min(elapsed / 500, 1);
+            const fadeOut = Math.max(0, (blob.endTime - Date.now()) / lifetime);
+            const currentOpacity = baseOpacity * fadeIn * fadeOut;
 
             ctx.beginPath();
-
             let coords = [];
-            for (let i = 0; i < points; i++) {
-                const angle = (i / points) * Math.PI * 2 + angleOffset;
-                const radius = size + Math.sin(t + variations[i]) * radiusVariation;
+            for (let i = 0; i < blob.points; i++) {
+                const angle = (i / blob.points) * Math.PI * 2 + angleOffset;
+                const radius = size + Math.sin(t + variations[i % variations.length]) * radiusVariation;
                 const px = x + Math.cos(angle) * radius;
                 const py = y + Math.sin(angle) * radius;
                 coords.push({ px, py });
@@ -145,9 +122,9 @@ export default function TrianglesWithStarsBackground() {
             ctx.closePath();
 
             const gradient = ctx.createRadialGradient(x, y, size * 0.2, x, y, size * 1.2);
-            const hue = (now / 50 + x + y) % 360;
-            gradient.addColorStop(0, `hsla(${hue}, 80%, 70%, ${opacity})`);
-            gradient.addColorStop(1, `hsla(${(hue + 40) % 360}, 80%, 40%, ${opacity * 0.8})`);
+            const hue = (Date.now() / 50 + x + y) % 360;
+            gradient.addColorStop(0, `hsla(${hue}, 80%, 70%, ${currentOpacity})`);
+            gradient.addColorStop(1, `hsla(${(hue + 40) % 360}, 80%, 40%, ${currentOpacity * 0.8})`);
 
             ctx.fillStyle = gradient;
             ctx.fill();
@@ -157,7 +134,7 @@ export default function TrianglesWithStarsBackground() {
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // --- Draw stars ---
+            // stars
             for (const s of stars) {
                 const flicker = Math.sin(Date.now() * s.flickerSpeed + s.phase) * 0.5 + 0.5;
                 ctx.beginPath();
@@ -166,28 +143,57 @@ export default function TrianglesWithStarsBackground() {
                 ctx.fill();
             }
 
-            // --- Draw & update blobs ---
-            blobs = blobs.filter((blob) => Date.now() < blob.endTime); // remove expired blobs
-            for (const blob of blobs) {
+            // blobs
+            for (let i = blobs.length - 1; i >= 0; i--) {
+                const blob = blobs[i];
                 drawBlob(blob);
 
                 // drift
                 blob.x += blob.vx;
                 blob.y += blob.vy;
+                blob.angleOffset += 0.005;
 
-                // gentle wobble
-                blob.angleOffset += 0.002;
-
-                // bounce at edges
+                // bounce
                 if (blob.x < -blob.size || blob.x > canvas.width + blob.size) blob.vx *= -1;
                 if (blob.y < -blob.size || blob.y > canvas.height + blob.size) blob.vy *= -1;
+
+                // lifetime removal
+                if (Date.now() > blob.endTime) {
+                    blobs.splice(i, 1);
+                    continue;
+                }
+
+                // interaction: split on mouse hover (with cooldown)
+                if (mouse.x !== null && mouse.y !== null) {
+                    const dx = mouse.x - blob.x;
+                    const dy = mouse.y - blob.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < blob.size && Date.now() - blob.lastSplit > 300) {
+                        blob.lastSplit = Date.now();
+                        blobs.splice(i, 1);
+
+                        // spawn two smaller blobs
+                        for (let j = 0; j < 2; j++) {
+                            blobs.push(
+                                createBlob(
+                                    blob.x + (Math.random() - 0.5) * blob.size * 0.5,
+                                    blob.y + (Math.random() - 0.5) * blob.size * 0.5,
+                                    blob.size * 0.6
+                                )
+                            );
+                        }
+                    }
+                }
             }
 
             animationFrameId = requestAnimationFrame(draw);
         }
 
         // spawn blobs periodically
-        blobInterval = setInterval(createBlob, 2000);
+        blobInterval = setInterval(() => {
+            blobs.push(createBlob());
+        }, 2000);
 
         draw();
 
@@ -201,8 +207,8 @@ export default function TrianglesWithStarsBackground() {
     return (
         <canvas
             ref={canvasRef}
-            className="absolute inset-0 w-full h-full pointer-events-none"
-            style={{ zIndex: 20 }}
+            className="absolute inset-0 w-full h-full "
+            style={{ zIndex: 50 }}
         />
     );
 }
